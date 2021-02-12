@@ -1,24 +1,49 @@
-body {
-    margin: 0px;
-    font-family: Arial, sans-serif;
-    max-width: 1080px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+:root {
+    --blue1: #233d4d;
+    --blue2: #d7e0de;
+    --green1: #a1c181;
+    --yellow1: #fcca46;
+    --orange1: #fe7f2d;
 }
 
+html {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: block;
+    background-color: var(--blue2);
+    height: 100vh;
+}
+
+#wrapper {
+    position: absolute;
+    padding: 2.5rem 0 2rem 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 header {
-    background-color: #445;
+    background-color: var(--blue1);
     overflow: hidden;
+    height: 2.5rem;
+    margin-top: -2.5rem;
 }
 
 #header-title {
     margin: 0px;
-    color: white;  
+    color: white;
     float: left;
     font-size: 1.2em;
     font-weight: 600;
-    padding: 14px 16px;
+    line-height: 2.5rem;
+    padding-left: 1rem;
 }
 
 #navbar {
@@ -28,25 +53,51 @@ header {
 
 .nav-link {
     width: 25%;
-    color: #fff;
+    color: white;
     font-size: 1.2em;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0 16px;
+    line-height: 2.5rem;
 }
 
 .nav-link:hover {
-    background-color: #ddd;
+    background-color: var(--yellow1);
     color: black;
+
 }
 
 .nav-link.active {
-    background-color: #0cd;
+    background-color: var(--orange1);
     color: white;
 }
 
-@media screen and (max-width: 500px) {
+
+#content {
+    max-width: 1080px;
+    margin: 0px auto;
+    background-color: white;
+    min-height: 100%;
+    box-shadow: 0px 0px 25px 5px var(--blue1);
+}
+
+#content h2 {
+    margin: 0px;
+    padding: 20px;
+}
+
+#footer {
+    background-color: var(--blue1);
+    width: 100%;
+    color: white;
+    height: 2rem;
+    line-height: 2rem;
+    margin-bottom: -2rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
     #header-title {display: none;}
     #navbar {float: none;}
 }
