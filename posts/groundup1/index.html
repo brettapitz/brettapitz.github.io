@@ -21,7 +21,7 @@
         </a>
         
         
-        <a class="nav-link " href="/posts/index.html">
+        <a class="nav-link " href="/posts/">
             <i class="medium material-icons icon">article</i>
             <span class="text">Posts</span>
         </a>
@@ -51,7 +51,7 @@
       <h1 class="post-date">February 15, 2021</h1>
     </div>
     <p><a href="https://programminggroundup.blogspot.com/">Programming from the Ground Up by Jonathan Bartlett</a> is a fantastic introduction to coding in assembly, but the syntax it uses is a bit outdated. While searching for more modern standards, I had trouble finding much related to the GNU Assembler, but plenty for NASM, the Netwide Assembler, which seems to be a lot more common.</p>
-<p>So, in the interest of keeping my studies relevant, I decided to translate the coding examples into modern 64-bit NASM. None of this should be taken as authoritative. I&rsquo;m just a student I&rsquo;m learning as I go.</p>
+<p>So, in the interest of keeping my studies relevant, I decided to translate the coding examples into modern 64-bit NASM. None of this should be taken as authoritative. I&rsquo;m just a student and I&rsquo;m learning as I go.</p>
 <p>All register names used in Ground Up are for 32-bit registers. Most modern CPUs use 64-bit registers. The 32-bit version will still often work, but in some situations (like pushing to and popping off the stack) the full register needs to be accounted for. Since I don&rsquo;t yet know best practices for every situation, I&rsquo;m just going to replace any 32-bit register (eax, edi, ebp, etc.) with its 64-bit equivalent (rax, rdi, rbp, etc.) for now.</p>
 <p>Other key differences between the book and the conventions I&rsquo;m using for this chapter are:</p>
 <ul>
