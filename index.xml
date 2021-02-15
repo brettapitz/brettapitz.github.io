@@ -6,5 +6,14 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>https://brettapitz.github.io/contact/</link>
+      <pubDate>Sat, 13 Feb 2021 11:06:11 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/contact/</guid>
+      <description>brett.apitz@gmail.com</description>
+    </item>
+    
   </channel>
 </rss>
