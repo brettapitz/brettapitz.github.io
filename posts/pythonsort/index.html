@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Sorting in Python </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="/js/main.js"></script>
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <i class="medium material-icons icon">home</i>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <i class="medium material-icons icon">article</i>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <i class="medium material-icons icon">filter_alt</i>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <i class="medium material-icons icon">contact_page</i>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Sorting in Python</h1>
+      <h1 class="post-date">February 13, 2021</h1>
+    </div>
+    <p>Continuing MIT&rsquo;s Data Structures and Algorithms course today, with my Python code for insertion sort, merge sort, and heap sort.</p>
+<p>In all three, I generated a list of n random integers between 0 and n, sorted the list, and then printed the first and last elements to make sure they were expected values, since printing the whole list would take forever with large values of n.</p>
+<p>Merge sort came out on top, with heap taking ~50% longer, and insertion taking almost as long to sort 10,000 items as merge took to sort 1,000,000.</p>
+<h2 id="insertion-sort">Insertion Sort</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+    <span style="color:#6272a4"># Create list of random integers</span>
+    n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10000</span>
+    numList <span style="color:#ff79c6">=</span> [None] <span style="color:#ff79c6">*</span> n
+    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(n):
+        numList[i] <span style="color:#ff79c6">=</span> random<span style="color:#ff79c6">.</span>randint(<span style="color:#bd93f9">0</span>, n)
+
+    <span style="color:#6272a4"># Starting at the first list element ensures that element [j] is always being inserted into</span>
+    <span style="color:#6272a4"># a sorted list, [0: j-1].</span>
+    <span style="color:#ff79c6">for</span> j <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">1</span>, n):
+        value_being_sorted <span style="color:#ff79c6">=</span> numList[j]
+        i <span style="color:#ff79c6">=</span> j <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+
+    <span style="color:#6272a4"># Move every element greater than &#39;value_being_sorted&#39; to the right. When we reach a number less</span>
+    <span style="color:#6272a4"># than &#39;value&#39;, we stop and place &#39;value&#39; to the right of it. If we never find a number less than</span>
+    <span style="color:#6272a4"># &#39;value&#39;, then &#39;value&#39; is our new first element.</span>
+        <span style="color:#ff79c6">while</span> numList[i] <span style="color:#ff79c6">&gt;</span> value_being_sorted:
+            numList[i<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>] <span style="color:#ff79c6">=</span> numList[i]
+            i <span style="color:#ff79c6">=</span> i <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+
+        numList[i<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>] <span style="color:#ff79c6">=</span> value_being_sorted</code></pre></div>
+<h2 id="merge-sort">Merge Sort</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+    <span style="color:#6272a4"># Create list of random integers</span>
+    n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1000000</span>
+    numList <span style="color:#ff79c6">=</span> [None] <span style="color:#ff79c6">*</span> n
+    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(n):
+        numList[i] <span style="color:#ff79c6">=</span> random<span style="color:#ff79c6">.</span>randint(<span style="color:#bd93f9">0</span>, n)
+
+    <span style="color:#6272a4"># mergeSort() and merge() are both passed lengths so that they don&#39;t need to find</span>
+    <span style="color:#6272a4"># it themselves with len(). len() is not a demanding function, but it would get</span>
+    <span style="color:#6272a4"># called a lot, resulting in large function call overhead.</span>
+    sortedList <span style="color:#ff79c6">=</span> mergeSort(numList, n)
+    <span style="color:#ff79c6">print</span>(sortedList[<span style="color:#bd93f9">0</span>])
+    <span style="color:#ff79c6">print</span>(sortedList[n<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>])
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">mergeSort</span>(numList, n):
+    <span style="color:#6272a4"># Split input list</span>
+    lenA <span style="color:#ff79c6">=</span> n<span style="color:#ff79c6">//</span><span style="color:#bd93f9">2</span>
+    lenB <span style="color:#ff79c6">=</span> n <span style="color:#ff79c6">-</span> n<span style="color:#ff79c6">//</span><span style="color:#bd93f9">2</span>
+    subListA <span style="color:#ff79c6">=</span> numList[<span style="color:#bd93f9">0</span>:n<span style="color:#ff79c6">//</span><span style="color:#bd93f9">2</span>]
+    subListB <span style="color:#ff79c6">=</span> numList[n<span style="color:#ff79c6">//</span><span style="color:#bd93f9">2</span>:n]
+
+    <span style="color:#6272a4"># Recurse if sublists can be split further</span>
+    <span style="color:#ff79c6">if</span> lenA <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">1</span>:
+        subListA <span style="color:#ff79c6">=</span> mergeSort(subListA, lenA)
+    <span style="color:#ff79c6">if</span> lenB <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">1</span>:
+        subListB <span style="color:#ff79c6">=</span> mergeSort(subListB, lenB)
+
+    <span style="color:#6272a4"># If sublists are sorted (and all single element lists are considered sorted), they are then merged</span>
+    output <span style="color:#ff79c6">=</span> merge(subListA, subListB, lenA, lenB)
+
+    <span style="color:#ff79c6">return</span> output
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">merge</span>(subListA, subListB, lenA, lenB):
+    <span style="color:#6272a4"># Three indices - one for each sublist, and one for the merged list</span>
+    i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+    j <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+    k <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+
+    <span style="color:#6272a4"># Initializing the merged output list is faster than creating an empty list and appending to it</span>
+    output <span style="color:#ff79c6">=</span> [None] <span style="color:#ff79c6">*</span> (lenA <span style="color:#ff79c6">+</span> lenB)
+
+    <span style="color:#6272a4"># Compare values in each list, returning the larger, until one list is finished</span>
+    <span style="color:#ff79c6">while</span> i<span style="color:#ff79c6">&lt;</span>lenA <span style="color:#ff79c6">and</span> j<span style="color:#ff79c6">&lt;</span>lenB:
+        <span style="color:#ff79c6">if</span> subListA[i] <span style="color:#ff79c6">&lt;</span> subListB[j]:
+            output[k] <span style="color:#ff79c6">=</span> subListA[i]
+            i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+            k <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+        <span style="color:#ff79c6">else</span>:
+            output[k] <span style="color:#ff79c6">=</span> subListB[j]
+            j <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+            k <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+
+    <span style="color:#6272a4"># Once one list is finished, the rest of the other list can be output without any value comparisons</span>
+    <span style="color:#ff79c6">if</span> i<span style="color:#ff79c6">&lt;</span>lenA:
+        output[k:] <span style="color:#ff79c6">=</span> subListA[i:]
+    <span style="color:#ff79c6">if</span> j<span style="color:#ff79c6">&lt;</span>lenB:
+        output[k:] <span style="color:#ff79c6">=</span> subListB[j:]
+
+    <span style="color:#ff79c6">return</span> output</code></pre></div>
+<h2 id="heap-sort">Heap Sort</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># Create list of random integers</span>
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+    n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1000000</span>
+    numList <span style="color:#ff79c6">=</span> [None] <span style="color:#ff79c6">*</span> n
+    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(n):
+        numList[i] <span style="color:#ff79c6">=</span> random<span style="color:#ff79c6">.</span>randint(<span style="color:#bd93f9">0</span>, n)
+    heapSort(numList, n)
+    <span style="color:#ff79c6">print</span>(numList[<span style="color:#bd93f9">0</span>])
+    <span style="color:#ff79c6">print</span>(numList[n<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>])
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">heapSort</span>(numList, n):
+    <span style="color:#6272a4"># heapSort() takes advantage of the O(1) time it takes to find the max in a max heap, </span>
+    <span style="color:#6272a4"># so the numbers must first be turned into a max heap using heapify().</span>
+    heapify(numList, n)
+
+    <span style="color:#6272a4"># The variable &#39;end&#39; points to the last unsorted element in the list.</span>
+    <span style="color:#6272a4"># In each &#39;while&#39; loop, the max (numList[0]) is swapped with the &#39;end&#39; element,</span>
+    <span style="color:#6272a4"># which is then sifted to re-heapify the unsorted elements.</span>
+    end <span style="color:#ff79c6">=</span> n <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+    <span style="color:#ff79c6">while</span> end <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>:
+        numList[<span style="color:#bd93f9">0</span>], numList[end] <span style="color:#ff79c6">=</span> numList[end], numList[<span style="color:#bd93f9">0</span>]
+        end <span style="color:#ff79c6">=</span> end <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+        siftDown(numList, <span style="color:#bd93f9">0</span>, end)
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">heapify</span>(numList, n):
+    <span style="color:#6272a4"># heapify() starts at the middle of the list, which will always be the last parent </span>
+    <span style="color:#6272a4"># element. Every element beyond this is a leaf, which cannot be sifted.</span>
+    start <span style="color:#ff79c6">=</span> n<span style="color:#ff79c6">//</span><span style="color:#bd93f9">2</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+    <span style="color:#ff79c6">while</span> start <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">0</span>:
+        siftDown(numList, start, n <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>)
+        start <span style="color:#ff79c6">=</span> start <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">siftDown</span>(numList, start, end):
+    <span style="color:#6272a4"># The variable &#39;root&#39; is the index of the parent of the current node group, and </span>
+    <span style="color:#6272a4"># &#39;child&#39; is the left child&#39;s index. Note that 2 * root + 1 returns the left child&#39;s</span>
+    <span style="color:#6272a4"># index in a zero-based array.</span>
+    root <span style="color:#ff79c6">=</span> start
+    child <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span> <span style="color:#ff79c6">*</span> root <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>
+    <span style="color:#6272a4"># If a child exists, &#39;swap&#39; is used to index to the largest of the three nodes.</span>
+    <span style="color:#6272a4"># If that turns out to be the parent, then siftDown() is done. Otherwise, the </span>
+    <span style="color:#6272a4"># parent is swapped with the larger child and the process repeats at the former parent&#39;s </span>
+    <span style="color:#6272a4"># new location.</span>
+    <span style="color:#ff79c6">while</span> (child) <span style="color:#ff79c6">&lt;=</span> end:
+        swap <span style="color:#ff79c6">=</span> root
+        <span style="color:#ff79c6">if</span> numList[swap] <span style="color:#ff79c6">&lt;</span> numList[child]:
+            swap <span style="color:#ff79c6">=</span> child
+        <span style="color:#ff79c6">if</span> (child <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>) <span style="color:#ff79c6">&lt;=</span> end <span style="color:#ff79c6">and</span> numList[swap] <span style="color:#ff79c6">&lt;</span> numList[child <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>]:
+            swap <span style="color:#ff79c6">=</span> child <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>
+
+        <span style="color:#ff79c6">if</span> swap <span style="color:#ff79c6">==</span> root:
+            <span style="color:#ff79c6">return</span>
+        <span style="color:#ff79c6">else</span>:
+            numList[root], numList[swap] <span style="color:#ff79c6">=</span> numList[swap], numList[root]
+            root <span style="color:#ff79c6">=</span> swap
+            child <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span> <span style="color:#ff79c6">*</span> root <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span></code></pre></div>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ul>
+<li>It can be worth it to avoid using the len() function if it&rsquo;s going to be called a lot.</li>
+<li>Initializing an array of [None] * x values and assigning a value for each index is faster than calling append() a bunch of times.</li>
+<li>I need to learn to find more elegant &lsquo;if&rsquo; statement solutions - my original attempt at the merge() function had some embarrassingly ugly branches.</li>
+</ul>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/algorithms">algorithms</a></div>
+      
+      <div class="post-tag"><a href="/tags/comp-sci">comp-sci</a></div>
+      
+      <div class="post-tag"><a href="/tags/python">python</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+</footer>
+</div>
+    </body>
+</html>

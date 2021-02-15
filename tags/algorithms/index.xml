@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Brett Apitz is Learning Stuff</title>
-    <link>https://brettapitz.github.io/</link>
-    <description>Recent content on Brett Apitz is Learning Stuff</description>
+    <title>algorithms on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/algorithms/</link>
+    <description>Recent content in algorithms on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 14:44:00 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Translating GAS to NASM, part 1</title>
-      <link>https://brettapitz.github.io/posts/groundup1/</link>
-      <pubDate>Mon, 15 Feb 2021 14:44:00 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/posts/groundup1/</guid>
-      <description>Programming from the Ground Up by Jonathan Bartlett is a fantastic introduction to coding in assembly, but the syntax it uses is a bit outdated. While searching for more modern standards, I had trouble finding much related to the GNU Assembler, but plenty for NASM, the Netwide Assembler, which seems to be a lot more common.
-So, in the interest of keeping my studies relevant, I decided to translate the coding examples into modern 64-bit NASM.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 13 Feb 2021 16:07:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sorting in Python</title>
       <link>https://brettapitz.github.io/posts/pythonsort/</link>
@@ -36,15 +26,6 @@ Merge sort came out on top, with heap taking ~50% longer, and insertion taking a
       <guid>https://brettapitz.github.io/posts/docdistance/</guid>
       <description>One of the first assignments in MIT&amp;rsquo;s Data Structures and Algorithms course on OpenCourseWare is analyzing the evolution of a document distance program across eight iterations. You can download the .py files here, in the Lecture Notes ZIP for Lecture 2.
 I&amp;rsquo;ll be using these variables, and looking at the code function by function. Number of Wordsn Number of LinesL Number of Charactersc Number of Unique Wordsu Average Words per Linew  read_file() The only change made to this function is a switch in v8 from readlines(), which returns a list with every line in the file represented as a separate string, to read(), which returns the entire file as a single string.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://brettapitz.github.io/contact/</link>
-      <pubDate>Sat, 13 Feb 2021 11:06:11 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/contact/</guid>
-      <description>brett.apitz@gmail.com</description>
     </item>
     
   </channel>

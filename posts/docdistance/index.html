@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Document Distance Optimization </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="/js/main.js"></script>
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <i class="medium material-icons icon">home</i>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <i class="medium material-icons icon">article</i>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <i class="medium material-icons icon">filter_alt</i>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <i class="medium material-icons icon">contact_page</i>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Document Distance Optimization</h1>
+      <h1 class="post-date">February 13, 2021</h1>
+    </div>
+    <p>One of the first assignments in MIT&rsquo;s Data Structures and Algorithms course on OpenCourseWare is analyzing the evolution of a document distance program across eight iterations. You can download the .py files <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-notes/">here</a>, in the Lecture Notes ZIP for Lecture 2.</p>
+<p>I&rsquo;ll be using these variables, and looking at the code function by function.
+<br>
+<br></p>
+<table class="variable-table">
+    <tr><th>Number of Words</th><td>n</td></tr> 
+    <tr><th>Number of Lines</th><td>L</td></tr>
+    <tr><th>Number of Characters</th><td>c</td></tr>
+    <tr><th>Number of Unique Words</th><td>u</td></tr>
+    <tr><th>Average Words per Line</th><td>w</td></tr>
+</table>
+<h2 id="read_file">read_file()</h2>
+<p>The only change made to this function is a switch in v8 from readlines(), which returns a list with every line in the file represented as a separate string, to read(), which returns the entire file as a single string.</p>
+<p>I can&rsquo;t find any solid information on the performance benefit here, but I would assume that readlines() includes a conditional that checks every single character against &lsquo;\n&rsquo;, an O(c) process. read() doesn&rsquo;t need that conditional, since it just dumps everything into a string, treating &lsquo;\n&rsquo; the same as every other char.</p>
+<h2 id="get_words_from_line_list">get_words_from_line_list()</h2>
+<p>In v1, new words are added to the word list using concatenation. For every line, the function performs the operation</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">word_list <span style="color:#ff79c6">=</span> word_list <span style="color:#ff79c6">+</span> words_in_line</code></pre></div>
+<p>This creates a new list and copies the contents of both lists into it, for a complexity of O(len(list1) + len(list2)). Over L iterations, this becomes (w + 2w + 3w + &hellip; + Lw), which simplifies to Lw(L + 1)/2, or n(L + 1)/2.</p>
+<p>In v2, this is replaced with the extend() function, which adds list2 to list1 in place, meaning no new list is created and each word gets moved in memory only once, resulting in O(n) complexity.</p>
+<p>In v8, this function still exists, but its contents have changed to what had previously been get_words_from_string(). Lines are no longer used in this version of the program.</p>
+<h2 id="get_words_from_string">get_words_from_string()</h2>
+<p>The original version of this function creates two lists. character_list accumulates letters until a non-alphanumeric character is reached. The function then checks to make sure the list isn&rsquo;t empty (which would happen if two non-alphanumeric characters were encountered consecutively), then joins the accumulated characters into a string, which it makes lowercase and adds to the word_list.</p>
+<p>In v5, this process is replaced by translate() and split(). I&rsquo;m not positive why this is faster; it seems like these two functions would have to do everything the previous version did. I&rsquo;m guessing the time save is due to the reduced number of function calls, which I have heard can be costly in Python.</p>
+<p>This function is called L times in versions 1-7, but in v8, it&rsquo;s called only once (per document, that is).</p>
+<h2 id="count_frequency">count_frequency()</h2>
+<p>Versions 1-3 use nested for loops to iterate through every word in the document and compare them to every unique word collected up to that point. This means n iterations on the outer loop, and (0 + 1 + 2 + &hellip; + u) iterations on the inner loop. Considering a worst case where every word in the document is unique, this works out to O(n<sup>3</sup>) time.</p>
+<p>Version 4 collects its unique words in a dictionary, or hash table, instead of a list. Checking to see if a given word exists in a hash table takes O(1) time, reducing this whole function to O(n) complexity.</p>
+<h2 id="sorting">sorting()</h2>
+<p>Versions 1-5 use insertion to alphabetically sort the unique word lists, which is O(n<sup>2</sup>). v6 switches to merge sort, which is O(nlog(n)).</p>
+<p>Version 7 ditches sorting completely. Sorting was only useful for speeding up the inner product function when the program was still storing unique words in lists. Now that it&rsquo;s using dictionaries instead, the inner product can use hashing to achieve similar performance.</p>
+<h2 id="inner_product">inner_product()</h2>
+<p>Initially, this function is set up to work for unsorted lists. Every unique word in Document 1 is checked against every unique word in Document 2, meaning exponential complexity. In v3, since we know that we are dealing with sorted lists, we can use a two-key method (much like the merge part of a merge sort) which has linear complexity. Once dictionaries are introduced and sorting is removed, we switch to hashing. I believe this is still linear, but I&rsquo;m fuzzy on some details of hash tables. If it does take longer, it&rsquo;s certainly a smaller time cost than sorting was.</p>
+<h2 id="return">return</h2>
+<p>That&rsquo;s it! The other functions are unchanged throughout all eight versions. When this course was filmed, running docdist1.py on two test TXT files took 228.1 seconds. The same two files run through docdist8.py took only 0.2 seconds. I love optimization!</p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/algorithms">algorithms</a></div>
+      
+      <div class="post-tag"><a href="/tags/comp-sci">comp-sci</a></div>
+      
+      <div class="post-tag"><a href="/tags/python">python</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+</footer>
+</div>
+    </body>
+</html>

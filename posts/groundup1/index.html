@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Translating GAS to NASM, part 1 </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="/js/main.js"></script>
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <i class="medium material-icons icon">home</i>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <i class="medium material-icons icon">article</i>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <i class="medium material-icons icon">filter_alt</i>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <i class="medium material-icons icon">contact_page</i>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Translating GAS to NASM, part 1</h1>
+      <h1 class="post-date">February 15, 2021</h1>
+    </div>
+    <p><a href="https://programminggroundup.blogspot.com/">Programming from the Ground Up by Jonathan Bartlett</a> is a fantastic introduction to coding in assembly, but the syntax it uses is a bit outdated. While searching for more modern standards, I had trouble finding much related to the GNU Assembler, but plenty for NASM, the Netwide Assembler, which seems to be a lot more common.</p>
+<p>So, in the interest of keeping my studies relevant, I decided to translate the coding examples into modern 64-bit NASM. None of this should be taken as authoritative. I&rsquo;m just a student I&rsquo;m learning as I go.</p>
+<p>All register names used in Ground Up are for 32-bit registers. Most modern CPUs use 64-bit registers. The 32-bit version will still often work, but in some situations (like pushing to and popping off the stack) the full register needs to be accounted for. Since I don&rsquo;t yet know best practices for every situation, I&rsquo;m just going to replace any 32-bit register (eax, edi, ebp, etc.) with its 64-bit equivalent (rax, rdi, rbp, etc.) for now.</p>
+<p>Other key differences between the book and the conventions I&rsquo;m using for this chapter are:</p>
+<ul>
+<li>GAS uses the format <code>instruction source, destination</code>, while NASM uses <code>instruction destination, source</code></li>
+<li>Constants in GAS are preceded with a <code>$</code> and registers with a <code>%</code>. NASM doesn&rsquo;t use prefixes for either.</li>
+<li>GAS&rsquo;s <code>globl</code> keyword is simply <code>global</code> in NASM</li>
+<li>NASM doesn&rsquo;t use suffixes for its instructions. <code>mov</code> will work for anything from a <code>BYTE</code> to a <code>QWORD</code>.</li>
+<li>GAS comments start with <code>#</code>, NASM comments start with <code>;</code></li>
+<li>The use of <code>int 0x80</code> has been replaced in the x86_64 standard. The <code>syscall</code> instruction should now be used. The number for selecting the <code>syscall</code> is still placed in <code>rax</code>, but which number issues which call has changed. &lsquo;Exit&rsquo; is now number 60. The return value for <code>syscall</code> 60 is placed in <code>rdi</code>, not <code>rbx</code>.</li>
+<li>The syntax for indexed addressing is much neater in NASM. Instead of GAS&rsquo;s weird <code>address(,index,multiplier)</code> thing, NASM dereferences all memory addresses using square brackets, within which the author can perform straightforward pointer arithmetic.</li>
+<li>GAS uses a set of identifiers for declaring initialized data, like &lsquo;.long&rsquo; and &lsquo;.ascii&rsquo;. NASM&rsquo;s identifiers are <code>db, dw, dd, dq, dt, do, dy, and dz</code>, which cover values with 1, 2, 4, 8, 10, 16, 32, and 64 bytes, respectively.</li>
+</ul>
+<h2 id="exercise-1---exiting-a-process">Exercise 1 - Exiting a Process</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-NASM" data-lang="NASM">    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.data</span>
+
+    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.text</span>
+    <span style="color:#ff79c6">global</span> <span style="color:#8be9fd;font-style:italic">_start</span>
+<span style="color:#8be9fd;font-style:italic">_start:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#bd93f9">60</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, <span style="color:#bd93f9">0</span>
+    <span style="color:#50fa7b">syscall</span></code></pre></div>
+<h2 id="exercise-2---find-max-value">Exercise 2 - Find max value</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-NASM" data-lang="NASM">    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.data</span>
+<span style="color:#8be9fd;font-style:italic">data_items:</span> <span style="color:#8be9fd;font-style:italic">dq</span> <span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">67</span>, <span style="color:#bd93f9">34</span>, <span style="color:#bd93f9">222</span>, <span style="color:#bd93f9">45</span>, <span style="color:#bd93f9">75</span>, <span style="color:#bd93f9">54</span>, <span style="color:#bd93f9">34</span>, <span style="color:#bd93f9">44</span>, <span style="color:#bd93f9">33</span>, <span style="color:#bd93f9">22</span>, <span style="color:#bd93f9">11</span>, <span style="color:#bd93f9">0</span>
+
+    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.text</span>
+    <span style="color:#ff79c6">global</span> <span style="color:#8be9fd;font-style:italic">_start</span>
+<span style="color:#8be9fd;font-style:italic">_start:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, <span style="color:#bd93f9">0</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, [<span style="color:#8be9fd;font-style:italic">data_items</span><span style="color:#ff79c6">+</span><span style="color:#8be9fd;font-style:italic">rdi</span><span style="color:#ff79c6">*</span><span style="color:#bd93f9">8</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rbx</span>, <span style="color:#8be9fd;font-style:italic">rax</span>
+
+<span style="color:#8be9fd;font-style:italic">start_loop:</span>
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#bd93f9">0</span>                  <span style="color:#6272a4">; Note that cmp doesn&#39;t work if the constant</span>
+                                <span style="color:#6272a4">; comes first. &#39;cmp 0, rax&#39; will throw an error.</span>
+    <span style="color:#50fa7b">je</span> <span style="color:#8be9fd;font-style:italic">loop_exit</span>
+    <span style="color:#50fa7b">inc</span> <span style="color:#8be9fd;font-style:italic">rdi</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, [<span style="color:#8be9fd;font-style:italic">data_items</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">rdi</span> <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">8</span>]
+
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">rbx</span>                <span style="color:#6272a4">; These two lines represent the conditional</span>
+    <span style="color:#50fa7b">jle</span> <span style="color:#8be9fd;font-style:italic">start_loop</span>              <span style="color:#6272a4">; rax &lt;= rbx. In GAS, it would represent </span>
+                                <span style="color:#6272a4">; rbx &lt;= rax. NASM order is more intuitive for </span>
+                                <span style="color:#6272a4">; once.</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rbx</span>, <span style="color:#8be9fd;font-style:italic">rax</span>
+    <span style="color:#50fa7b">jmp</span> <span style="color:#8be9fd;font-style:italic">start_loop</span>
+
+<span style="color:#8be9fd;font-style:italic">loop_exit:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#bd93f9">60</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, <span style="color:#8be9fd;font-style:italic">rbx</span>
+    <span style="color:#50fa7b">syscall</span></code></pre></div>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/assembly">assembly</a></div>
+      
+      <div class="post-tag"><a href="/tags/comp-sci">comp-sci</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+</footer>
+</div>
+    </body>
+</html>

@@ -5,6 +5,43 @@
     <link>https://brettapitz.github.io/tags/</link>
     <description>Recent content in Tags on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 14:44:00 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>assembly</title>
+      <link>https://brettapitz.github.io/tags/assembly/</link>
+      <pubDate>Mon, 15 Feb 2021 14:44:00 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/assembly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>comp-sci</title>
+      <link>https://brettapitz.github.io/tags/comp-sci/</link>
+      <pubDate>Mon, 15 Feb 2021 14:44:00 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/comp-sci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithms</title>
+      <link>https://brettapitz.github.io/tags/algorithms/</link>
+      <pubDate>Sat, 13 Feb 2021 16:07:59 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://brettapitz.github.io/tags/python/</link>
+      <pubDate>Sat, 13 Feb 2021 16:07:59 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
