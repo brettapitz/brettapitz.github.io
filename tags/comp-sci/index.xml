@@ -13,8 +13,9 @@
       <pubDate>Sat, 27 Feb 2021 19:38:29 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/posts/groundup2/</guid>
-      <description>Chapter 4 covers basic functions.
- GAS uses a new syntax for indexing memory using the base pointer register: x($ebp), where x is an integer number of bytes away from the pointer. NASM uses the same syntax as the previous chapter, with rbp used in pointer math in square brackets. Though it&amp;rsquo;s used throughout the book, the line .type foo, @function is not required in GAS. The .type directive is used to define the type of a symbol (in this case defining foo as a function), and is useful for debugging or making a function available in other programs.</description>
+      <description>Chapter 4 covers basic functions, and there&amp;rsquo;s not a lot to go over - function syntax is very similar between GAS and NASM.
+A few things to note:
+ GAS uses a new syntax for indexing memory using the base pointer register: x($ebp), where x is an integer number of bytes away from the pointer. NASM uses the same syntax as the previous chapter, with rbp used in pointer math in square brackets.</description>
     </item>
     
     <item>

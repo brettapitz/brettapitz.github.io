@@ -48,11 +48,12 @@
       <h1 class="post-title">Translating GAS to NASM, part 2</h1>
       <h1 class="post-date">February 27, 2021</h1>
     </div>
-    <p>Chapter 4 covers basic functions.</p>
+    <p>Chapter 4 covers basic functions, and there&rsquo;s not a lot to go over - function syntax is very similar between GAS and NASM.</p>
+<p>A few things to note:</p>
 <ul>
 <li>GAS uses a new syntax for indexing memory using the base pointer register: <code>x($ebp)</code>, where x is an integer number of bytes away from the pointer. NASM uses the same syntax as the previous chapter, with <code>rbp</code> used in pointer math in square brackets.</li>
 <li>Though it&rsquo;s used throughout the book, the line <code>.type foo, @function</code> is not required in GAS. The <code>.type</code> directive is used to define the type of a symbol (in this case defining <code>foo</code> as a function), and is useful for debugging or making a function available in other programs. In NASM, the keyword <code>global</code> is used to make a function available externally.</li>
-<li>I mentioned in the last chapter that the push and pop instructions operate on 8 byte chunks, and you have to remember that for any interactions with the stack from this chapter onward.</li>
+<li>I mentioned in the last chapter that the push and pop instructions operate on 8 byte chunks, and it&rsquo;s important to remember that for any interactions with the stack from this chapter onward.</li>
 <li>Since the program&rsquo;s return value will be stored in <code>rdi</code>, I moved data to registers that would target that as an ultimate destination rather than <code>rax</code>.</li>
 </ul>
 <h2 id="exercise-3---calling-a-basic-function">Exercise 3 - Calling a basic function</h2>
