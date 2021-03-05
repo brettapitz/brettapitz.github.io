@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 15:44:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Translating GAS to NASM, part 3</title>
+      <link>https://brettapitz.github.io/posts/groundup3/</link>
+      <pubDate>Fri, 05 Mar 2021 11:23:29 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/groundup3/</guid>
+      <description>Chapter 5 introduces file manipulation, which means more interaction with the operating system. All system calls changed with the move to x86_64, so whenever they come up in the book I&amp;rsquo;ll have a lot of researching and translating to do. For those of us with terrible memories, we&amp;rsquo;ve also got symbol declarations for constants now, which are only slightly different in NASM. Uninitialized data declaration syntax brings us the second appearance of NASM&amp;rsquo;s bwdqtoyz size-type suffixes, for which I made my own mnemonic: &amp;lsquo;Black and White Dairy Queen TOYZ&amp;rsquo;.</description>
+    </item>
+    
+    <item>
       <title>Translating GAS to NASM, part 2</title>
       <link>https://brettapitz.github.io/posts/groundup2/</link>
       <pubDate>Sat, 27 Feb 2021 19:38:29 -0500</pubDate>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Translating GAS to NASM, part 3 </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14 4v-2h-14v11c0 0.552 0.448 1 1 1h13.5c0.828 0 1.5-0.672 1.5-1.5v-8.5h-2zM13 13h-12v-10h12v10zM2 5h10v1h-10zM8 7h4v1h-4zM8 9h4v1h-4zM8 11h3v1h-3zM2 7h5v5h-5z"></path></svg>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14.5 2h-13c-0.825 0-1.5 0.675-1.5 1.5v10c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-10c0-0.825-0.675-1.5-1.5-1.5zM6.23 8.6l-4.23 3.295v-7.838l4.23 4.543zM2.756 4h10.488l-5.244 3.938-5.244-3.938zM6.395 8.777l1.605 1.723 1.605-1.723 3.29 4.223h-9.79l3.29-4.223zM9.77 8.6l4.23-4.543v7.838l-4.23-3.295z"></path></svg>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Translating GAS to NASM, part 3</h1>
+      <h1 class="post-date">March 5, 2021</h1>
+    </div>
+    <p>Chapter 5 introduces file manipulation, which means more interaction with the operating system. All system calls changed with the move to x86_64, so whenever they come up in the book I&rsquo;ll have a lot of researching and translating to do. For those of us with terrible memories, we&rsquo;ve also got symbol declarations for constants now, which are only slightly different in NASM. Uninitialized data declaration syntax brings us the second appearance of NASM&rsquo;s <code>bwdqtoyz</code> size-type suffixes, for which I made my own mnemonic: &lsquo;Black and White Dairy Queen TOYZ&rsquo;.</p>
+<p>NASM differences to note:</p>
+<ul>
+<li>New system calls! <code>read</code>, <code>write</code>, <code>open</code>, and <code>close</code> are syscalls 0, 1, 2, and 3 respectively - place these numbers in <code>%rax</code>. <code>read</code>, <code>write</code>, and <code>close</code> all place their file descriptors in <code>%rdi</code>, while <code>open</code> places the pointer to the filename there. <code>read</code> and <code>write</code> place their buffer addresses in <code>%rsi</code> and their byte counts in <code>%rdx</code>, while <code>open</code> puts flags in <code>%rsi</code> and permission modes in <code>%rdx</code>.</li>
+<li>On my system, the numbers for flags to the <code>open</code> syscall are not exactly the same as in the book. The <code>3101</code> octal that the book uses for O_CREAT_WRONLY_TRUNC is <code>1101</code> on mine. As the book&rsquo;s code comments point out, Linux stores these values in usr/local/asm/fcntl.h.</li>
+<li>From what I can gather, the number supplied to <code>open</code> for the permission mode (<code>%rdx</code>) corresponds to the Unix <code>drwxrwxrwx</code> permission bit mask (which you can see when you use the <code>ls -l</code> command in the terminal). The value <code>0666</code> used in the book corresponds to the binary value for <code>-rw-rw-rw-</code> (although, at least on my system, the third write permission is kept restricted).</li>
+<li>Octals in GAS are denoted using a leading <code>0</code>. In NASM, a number with just a leading 0 will still be interpreted as a decimal. There are four notations for octals in NASM: <code>123o</code>, <code>123q</code>, <code>0o123</code>, and <code>0q123</code>. I&rsquo;ll be using the <code>0o</code> prefix, in keeping with the C convention that uses <code>0x</code> for hex numbers.</li>
+<li>Defining symbols for constants is slightly different in NASM. Instead of <code>.equ VARIABLE_NAME, #</code>, use <code>variable_name equ #</code>.</li>
+<li>NASM&rsquo;s equivalent of <code>.lcomm</code> is the <code>res</code> family of keywords - <code>resb</code>, <code>resw</code>, <code>resd</code>, <code>resq</code>, <code>rest</code>, <code>reso</code>, <code>resy</code>, <code>resz</code>. These follow the <code>db</code>, <code>dw</code>, etc. naming scheme discussed in part 1 for declaring initialized data. The suffix determines the base size-type, and they all take an operand that determines how many of that size-type should be reserved. So, <code>buffer: resb 4</code> creates a pointer to a 4-byte buffer, while <code>buffer: resq 4</code> creates a pointer to a 32-byte buffer.</li>
+</ul>
+<h2 id="exercise-5---convert-a-files-contents-to-uppercase">Exercise 5 - Convert a file&rsquo;s contents to uppercase</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-NASM" data-lang="NASM">    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.data</span>
+    <span style="color:#6272a4">;; Declare symbols</span>
+    sys_read<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span>
+    sys_write<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">1</span>
+    sys_open<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">2</span>
+    sys_close<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">3</span>
+    sys_exit<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">60</span>
+
+    rdonly<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span>
+    creat_wronly_trunc<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span><span style="color:#8be9fd;font-style:italic">o1101</span>
+
+    stdin<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span>
+    stdout<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">1</span>
+    stderr<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">2</span>
+
+    eof<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span>
+    num_args<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">2</span>
+
+
+    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.bss</span>
+    <span style="color:#6272a4">;; Reserve read/write buffer</span>
+    buffer_size<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">500</span>
+<span style="color:#8be9fd;font-style:italic">buffer_data:</span>     <span style="color:#8be9fd;font-style:italic">resb</span> <span style="color:#8be9fd;font-style:italic">buffer_size</span>
+
+
+    <span style="color:#ff79c6">section</span> <span style="color:#8be9fd;font-style:italic">.text</span>
+    <span style="color:#6272a4">;; Symbols for stack locations and sizes relative to rbp</span>
+    st_size_reserve<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">16</span>
+    st_fd_in<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">8</span>
+    st_fd_out<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">16</span>
+    st_argc<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">0</span>
+    st_argv_0<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">8</span>
+    st_argv_1<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">16</span>
+    st_argv_2<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">24</span>
+
+    <span style="color:#ff79c6">global</span> <span style="color:#8be9fd;font-style:italic">_start</span>
+<span style="color:#8be9fd;font-style:italic">_start:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rbp</span>, <span style="color:#8be9fd;font-style:italic">rsp</span>
+    <span style="color:#50fa7b">sub</span> <span style="color:#8be9fd;font-style:italic">rsp</span>, <span style="color:#8be9fd;font-style:italic">st_size_reserve</span>
+
+<span style="color:#8be9fd;font-style:italic">open_files:</span>
+<span style="color:#8be9fd;font-style:italic">open_fd_in:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_open</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_argv_1</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rsi</span>, <span style="color:#8be9fd;font-style:italic">rdonly</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdx</span>, <span style="color:#bd93f9">0</span><span style="color:#8be9fd;font-style:italic">o666</span>
+    <span style="color:#50fa7b">syscall</span>
+
+<span style="color:#8be9fd;font-style:italic">store_fd_in:</span>
+    <span style="color:#50fa7b">mov</span> [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_in</span>], <span style="color:#8be9fd;font-style:italic">rax</span>
+
+<span style="color:#8be9fd;font-style:italic">open_fd_out:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_open</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_argv_2</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rsi</span>, <span style="color:#8be9fd;font-style:italic">creat_wronly_trunc</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdx</span>, <span style="color:#bd93f9">0</span><span style="color:#8be9fd;font-style:italic">o666</span>
+    <span style="color:#50fa7b">syscall</span>
+
+<span style="color:#8be9fd;font-style:italic">store_fd_out:</span>
+    <span style="color:#50fa7b">mov</span> [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_out</span>], <span style="color:#8be9fd;font-style:italic">rax</span>
+
+<span style="color:#8be9fd;font-style:italic">read_loop_begin:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_read</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_in</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rsi</span>, <span style="color:#8be9fd;font-style:italic">buffer_data</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdx</span>, <span style="color:#8be9fd;font-style:italic">buffer_size</span>
+    <span style="color:#50fa7b">syscall</span>
+
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">eof</span>
+    <span style="color:#50fa7b">jle</span> <span style="color:#8be9fd;font-style:italic">end_loop</span>
+
+<span style="color:#8be9fd;font-style:italic">continue_read_loop:</span>
+    <span style="color:#50fa7b">push</span> <span style="color:#8be9fd;font-style:italic">buffer_data</span>
+    <span style="color:#50fa7b">push</span> <span style="color:#8be9fd;font-style:italic">rax</span>
+    <span style="color:#50fa7b">call</span> <span style="color:#8be9fd;font-style:italic">convert_to_upper</span>
+    <span style="color:#50fa7b">pop</span> <span style="color:#8be9fd;font-style:italic">rax</span>
+    <span style="color:#50fa7b">add</span> <span style="color:#8be9fd;font-style:italic">rsp</span>, <span style="color:#bd93f9">8</span>
+
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdx</span>, <span style="color:#8be9fd;font-style:italic">rax</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_write</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_out</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rsi</span>, <span style="color:#8be9fd;font-style:italic">buffer_data</span>
+    <span style="color:#50fa7b">syscall</span>
+
+    <span style="color:#50fa7b">jmp</span> <span style="color:#8be9fd;font-style:italic">read_loop_begin</span>
+
+<span style="color:#8be9fd;font-style:italic">end_loop:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_close</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_out</span>]
+    <span style="color:#50fa7b">syscall</span>
+
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_close</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_fd_in</span>]
+    <span style="color:#50fa7b">syscall</span>
+
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, <span style="color:#8be9fd;font-style:italic">sys_exit</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, <span style="color:#bd93f9">0</span>
+    <span style="color:#50fa7b">syscall</span>
+
+
+    <span style="color:#6272a4">;; Declare symbols for convert function</span>
+    lowercase_a<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#f1fa8c">&#39;a&#39;</span>
+    lowercase_z<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#f1fa8c">&#39;z&#39;</span>
+    upper_conversion<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#f1fa8c">&#39;A&#39;</span> <span style="color:#ff79c6">-</span> <span style="color:#f1fa8c">&#39;a&#39;</span>
+
+    st_buffer_len<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">16</span>
+    st_buffer<span style="color:#8be9fd;font-style:italic"> equ</span> <span style="color:#bd93f9">24</span>
+
+<span style="color:#8be9fd;font-style:italic">convert_to_upper:</span>
+    <span style="color:#50fa7b">push</span> <span style="color:#8be9fd;font-style:italic">rbp</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rbp</span>, <span style="color:#8be9fd;font-style:italic">rsp</span>
+
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rax</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_buffer</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rbx</span>, [<span style="color:#8be9fd;font-style:italic">rbp</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">st_buffer_len</span>]
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rdi</span>, <span style="color:#bd93f9">0</span>
+
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">rbx</span>, <span style="color:#bd93f9">0</span>
+    <span style="color:#50fa7b">je</span> <span style="color:#8be9fd;font-style:italic">end_convert_loop</span>
+
+<span style="color:#8be9fd;font-style:italic">convert_loop:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">cl</span>, [<span style="color:#8be9fd;font-style:italic">rax</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">rdi</span>]
+
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">cl</span>, <span style="color:#8be9fd;font-style:italic">lowercase_a</span>
+    <span style="color:#50fa7b">jl</span> <span style="color:#8be9fd;font-style:italic">next_byte</span>
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">cl</span>, <span style="color:#8be9fd;font-style:italic">lowercase_z</span>
+    <span style="color:#50fa7b">jg</span> <span style="color:#8be9fd;font-style:italic">next_byte</span>
+
+    <span style="color:#50fa7b">add</span> <span style="color:#8be9fd;font-style:italic">cl</span>, <span style="color:#8be9fd;font-style:italic">upper_conversion</span>
+    <span style="color:#50fa7b">mov</span> [<span style="color:#8be9fd;font-style:italic">rax</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">rdi</span>], <span style="color:#8be9fd;font-style:italic">cl</span>
+
+<span style="color:#8be9fd;font-style:italic">next_byte:</span>
+    <span style="color:#50fa7b">inc</span> <span style="color:#8be9fd;font-style:italic">rdi</span>
+    <span style="color:#50fa7b">cmp</span> <span style="color:#8be9fd;font-style:italic">rbx</span>, <span style="color:#8be9fd;font-style:italic">rdi</span>
+    <span style="color:#50fa7b">jne</span> <span style="color:#8be9fd;font-style:italic">convert_loop</span>
+
+<span style="color:#8be9fd;font-style:italic">end_convert_loop:</span>
+    <span style="color:#50fa7b">mov</span> <span style="color:#8be9fd;font-style:italic">rsp</span>, <span style="color:#8be9fd;font-style:italic">rbp</span>
+    <span style="color:#50fa7b">pop</span> <span style="color:#8be9fd;font-style:italic">rbp</span>
+    <span style="color:#50fa7b">ret</span></code></pre></div>
+<p class="article-links"><a href="/posts/groundup2">Previous Chapter</a></p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/assembly">assembly</a></div>
+      
+      <div class="post-tag"><a href="/tags/comp-sci">comp-sci</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+</footer>
+</div>
+    </body>
+</html>
