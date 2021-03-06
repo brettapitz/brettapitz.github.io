@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>graphics on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/graphics/</link>
+    <description>Recent content in graphics on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Mar 2021 15:38:14 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/graphics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diving Into WebGL</title>
+      <link>https://brettapitz.github.io/posts/webgl_rotating_cube/</link>
+      <pubDate>Sat, 06 Mar 2021 15:38:14 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/webgl_rotating_cube/</guid>
+      <description>My Lovely Rotating Cube I&amp;rsquo;ve been spending some time wrapping my head around graphics programming lately. After a week of wrestling with JavaScript in Hugo and studying WebGL and GLSL, I&amp;rsquo;ve made it all the way to a rotating, lit cube!  It doesn&amp;rsquo;t look like much, but I&amp;rsquo;ve learned a ton! Even this simple example required understanding a huge variety of concepts.
+ I&amp;rsquo;m manipulating and applying matrices for coordinate system conversion, keeping matrix calculations on the CPU where possible.</description>
+    </item>
+    
+  </channel>
+</rss>
