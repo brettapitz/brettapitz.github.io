@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 15:44:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Plotting Pokemon Stats</title>
+      <link>https://brettapitz.github.io/posts/pokemon_scatter/</link>
+      <pubDate>Tue, 09 Mar 2021 09:43:45 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/pokemon_scatter/</guid>
+      <description>I made this data visualization earlier this year while studying d3.js. Just got it up and running on the new site. I&amp;rsquo;m using data from Takamasa Kato on Kaggle.
+Axes are selectable, and you can hover over a point to see which Pokemon it belongs to.
+ X Axis: Select    Y Axis: Select     </description>
+    </item>
+    
+    <item>
       <title>Diving Into WebGL</title>
       <link>https://brettapitz.github.io/posts/webgl_rotating_cube/</link>
       <pubDate>Sat, 06 Mar 2021 15:38:14 -0500</pubDate>
