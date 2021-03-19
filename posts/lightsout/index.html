@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title> Tags </title>
+<title> React Test </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -25,7 +25,7 @@
         </a>
         
         
-        <a class="nav-link active" href="/tags/">
+        <a class="nav-link " href="/tags/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
             <span class="text">Tags</span>
         </a>
@@ -39,52 +39,40 @@
     </div>
 </header>
 <div id="content">
-<div id="tag-container">
-  
-  <a href="https://brettapitz.github.io/tags/comp-sci/">
-    <div class="tag-card">comp-sci 5</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/assembly/">
-    <div class="tag-card">assembly 3</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/algorithms/">
-    <div class="tag-card">algorithms 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/python/">
-    <div class="tag-card">python 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/d3/">
-    <div class="tag-card">d3 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/data-visualization/">
-    <div class="tag-card">data-visualization 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/games/">
-    <div class="tag-card">games 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/graphics/">
-    <div class="tag-card">graphics 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/opengl/">
-    <div class="tag-card">opengl 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/react/">
-    <div class="tag-card">react 1</div>
-  </a>
-  
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">React Test</h1>
+      <h1 class="post-date">March 18, 2021</h1>
+    </div>
+    <p>As a kid, I had a handheld version of this game made by Tiger. For my siblings and me, it was neat distraction for a few weeks. Now, with some help from Blender and React, I can make it myself!</p>
+<p>Clearly, it&rsquo;s not finished yet. I just wanted to put up my progress with it after a few hours. Getting React and JSX to play nicely with Hugo wasn&rsquo;t much trouble, and the game&rsquo;s logic is pretty straightforward. Next, I&rsquo;ll add some puzzle layouts (maybe with JSON?) and some basic controls and feedback.</p>
+<div id="lightsout_container"></div>
+<script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/react">react</a></div>
+      
+      <div class="post-tag"><a href="/tags/games">games</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=/js/lightsout.js ></script>
 
 </footer>
 </div>

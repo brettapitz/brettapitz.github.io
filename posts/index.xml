@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 15:44:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>React Test</title>
+      <link>https://brettapitz.github.io/posts/lightsout/</link>
+      <pubDate>Thu, 18 Mar 2021 09:43:45 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/lightsout/</guid>
+      <description>As a kid, I had a handheld version of this game made by Tiger. For my siblings and me, it was neat distraction for a few weeks. Now, with some help from Blender and React, I can make it myself!
+Clearly, it&amp;rsquo;s not finished yet. I just wanted to put up my progress with it after a few hours. Getting React and JSX to play nicely with Hugo wasn&amp;rsquo;t much trouble, and the game&amp;rsquo;s logic is pretty straightforward.</description>
+    </item>
+    
+    <item>
       <title>Plotting Pokemon Stats</title>
       <link>https://brettapitz.github.io/posts/pokemon_scatter/</link>
       <pubDate>Tue, 09 Mar 2021 09:43:45 -0500</pubDate>
