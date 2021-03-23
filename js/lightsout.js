@@ -3,13 +3,13 @@
   function LightsOutButton(props) {
     if (props.on) {
       return /* @__PURE__ */ React.createElement("img", {
-        className: "lights_out_button",
+        className: "lightsout_button",
         src: "Button_On.png",
         onClick: props.onClick
       });
     } else {
       return /* @__PURE__ */ React.createElement("img", {
-        className: "lights_out_button",
+        className: "lightsout_button",
         src: "Button_Off.png",
         onClick: props.onClick
       });
@@ -56,8 +56,8 @@
       setCurrent(val);
       reset(val);
     };
-    const reset = (l) => {
-      level = JSON.parse(JSON.stringify(game_data.levels[l]));
+    const reset = (x) => {
+      level = JSON.parse(JSON.stringify(game_data.levels[x]));
       setLights(level);
     };
     return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", null, renderButton(0, 0), renderButton(0, 1), renderButton(0, 2), renderButton(0, 3), renderButton(0, 4)), /* @__PURE__ */ React.createElement("div", null, renderButton(1, 0), renderButton(1, 1), renderButton(1, 2), renderButton(1, 3), renderButton(1, 4)), /* @__PURE__ */ React.createElement("div", null, renderButton(2, 0), renderButton(2, 1), renderButton(2, 2), renderButton(2, 3), renderButton(2, 4)), /* @__PURE__ */ React.createElement("div", null, renderButton(3, 0), renderButton(3, 1), renderButton(3, 2), renderButton(3, 3), renderButton(3, 4)), /* @__PURE__ */ React.createElement("div", null, renderButton(4, 0), renderButton(4, 1), renderButton(4, 2), renderButton(4, 3), renderButton(4, 4)), /* @__PURE__ */ React.createElement("div", {
