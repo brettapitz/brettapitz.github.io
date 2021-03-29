@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 09:43:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 12:33:46 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>assembly</title>
+      <link>https://brettapitz.github.io/tags/assembly/</link>
+      <pubDate>Mon, 29 Mar 2021 12:33:46 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/assembly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>comp-sci</title>
+      <link>https://brettapitz.github.io/tags/comp-sci/</link>
+      <pubDate>Mon, 29 Mar 2021 12:33:46 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/comp-sci/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>games</title>
       <link>https://brettapitz.github.io/tags/games/</link>
@@ -58,24 +76,6 @@
       <pubDate>Sat, 06 Mar 2021 15:38:14 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/tags/opengl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>assembly</title>
-      <link>https://brettapitz.github.io/tags/assembly/</link>
-      <pubDate>Fri, 05 Mar 2021 11:23:29 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/tags/assembly/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>comp-sci</title>
-      <link>https://brettapitz.github.io/tags/comp-sci/</link>
-      <pubDate>Fri, 05 Mar 2021 11:23:29 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/tags/comp-sci/</guid>
       <description></description>
     </item>
     

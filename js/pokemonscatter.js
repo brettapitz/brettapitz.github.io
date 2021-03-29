@@ -28,7 +28,7 @@
     return __exportStar(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", {value: module, enumerable: true}), module);
   };
 
-  // ns-hugo:/home/brett/Documents/Personal/dev/assets/js/d3.min.js
+  // ns-hugo:/home/brett/Sites/Personal/dev/assets/js/d3.min.js
   var require_d3_min = __commonJS((exports, module) => {
     !function(t, n) {
       typeof exports == "object" && typeof module != "undefined" ? n(exports) : typeof define == "function" && define.amd ? define(["exports"], n) : n((t = typeof globalThis != "undefined" ? globalThis : t || self).d3 = t.d3 || {});

@@ -1,5 +1,5 @@
 (() => {
-  // ns-hugo:/home/brett/Documents/Personal/dev/assets/js/twgl-full.module.js
+  // ns-hugo:/home/brett/Sites/Personal/dev/assets/js/twgl-full.module.js
   /* @license twgl.js 4.19.1 Copyright (c) 2015, Gregg Tavares All Rights Reserved.
   Available via the MIT license.
   see: http://github.com/greggman/twgl.js for details */
