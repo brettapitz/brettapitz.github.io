@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brettapitz.github.io/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brettapitz.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brettapitz.github.io/tags/data-oriented-design/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brettapitz.github.io/posts/dod-patterns-command/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brettapitz.github.io/tags/gamedev/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brettapitz.github.io/tags/</loc>
+    <lastmod>2021-04-03T12:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brettapitz.github.io/tags/assembly/</loc>
     <lastmod>2021-03-29T12:33:46-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://brettapitz.github.io/</loc>
-    <lastmod>2021-03-29T12:33:46-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://brettapitz.github.io/tags/comp-sci/</loc>
-    <lastmod>2021-03-29T12:33:46-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brettapitz.github.io/tags/</loc>
     <lastmod>2021-03-29T12:33:46-05:00</lastmod>
   </url>
   

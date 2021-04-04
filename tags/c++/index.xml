@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c&#43;&#43; on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Apr 2021 12:00:00 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data-Oriented Design Patterns: Command</title>
+      <link>https://brettapitz.github.io/posts/dod-patterns-command/</link>
+      <pubDate>Sat, 03 Apr 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/dod-patterns-command/</guid>
+      <description>I&amp;rsquo;ve been reading Richard Fabian&amp;rsquo;s Data-Oriented Design book lately, and wanted to try applying some of its concepts to a common gamedev problem often solved using the Command design pattern. I will readily admit that I&amp;rsquo;m probably misunderstanding some things and misapplying techniques, and maybe writing what professionals will consider very ugly code, but I&amp;rsquo;ll risk embarrassing myself to share what I&amp;rsquo;ve been up to.
+The problem I chose to tackle is a (very) simple input handler.</description>
+    </item>
+    
+  </channel>
+</rss>
