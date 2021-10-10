@@ -38,7 +38,7 @@
         
     </div>
 </header>
-<div id="content">
+<div id="content" class="fadePageIn">
 <div id="tag-container">
   
   <a href="https://brettapitz.github.io/tags/comp-sci/">
@@ -55,6 +55,10 @@
   
   <a href="https://brettapitz.github.io/tags/python/">
     <div class="tag-card">python 2</div>
+  </a>
+  
+  <a href="https://brettapitz.github.io/tags/react/">
+    <div class="tag-card">react 2</div>
   </a>
   
   <a href="https://brettapitz.github.io/tags/c&#43;&#43;/">
@@ -89,8 +93,8 @@
     <div class="tag-card">opengl 1</div>
   </a>
   
-  <a href="https://brettapitz.github.io/tags/react/">
-    <div class="tag-card">react 1</div>
+  <a href="https://brettapitz.github.io/tags/ui/">
+    <div class="tag-card">ui 1</div>
   </a>
   
 </div>
@@ -98,6 +102,23 @@
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
 </footer>
 </div>
     </body>

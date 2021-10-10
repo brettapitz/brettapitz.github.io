@@ -6,7 +6,18 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Apr 2021 12:00:00 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Oct 2021 09:43:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reactulator</title>
+      <link>https://brettapitz.github.io/posts/calculator/</link>
+      <pubDate>Sun, 10 Oct 2021 09:43:45 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/calculator/</guid>
+      <description>I&amp;rsquo;ve been feeling a bit rusty lately, so I&amp;rsquo;d like to start making a little project and posting it here every day. Today&amp;rsquo;s thing is a simple calculator!
+ You can play with the code here.
+I originally put this together in basic JavaScript, which I found quite pleasant to write, but quite ugly to look at later, so I remade it in React. The core of the design is a simple state machine: the calculator is either collecting its first (or left) input, awaiting its second (right) input after an operator is pressed, collecting its right input, or displaying the result (which is stored in &amp;lsquo;left&amp;rsquo;) after pressing &amp;lsquo;=&amp;rsquo;.</description>
+    </item>
+    
     <item>
       <title>Data-Oriented Design Patterns: Command</title>
       <link>https://brettapitz.github.io/posts/dod-patterns-command/</link>

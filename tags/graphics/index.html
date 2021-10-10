@@ -38,30 +38,78 @@
         
     </div>
 </header>
-<div id="content">
+<div id="content" class="fadePageIn">
 <br><br>
 
-<a href="/posts/webgl_rotating_cube/">
-    <div class="post-card">
-        <h2>
-            <span class="post-card-title">Diving Into WebGL</span>
-            <span class="post-card-date">March 6, 2021</span>
-        </h2>
-        <p class="post-card-summary">Reaching the pinnacle of web graphics - a little red cube!</p>
-        <div class="post-card-tags">
-            
-            <div class="post-card-tag">graphics</div>
-            
-            <div class="post-card-tag">opengl</div>
-            
-        </div>
-    </div>
-</a>
+<div class="year-section-button">
+    <div>2021</div>
+</div>
+<div class="year-section">
 
+    <div class="month-section-button collapsible">
+        <div>MARCH</div>
+    </div>
+    <div class="month-section fadePageIn">
+        
+        <a href="/posts/webgl_rotating_cube/">
+            <div class="post-card">
+                <h2>
+                    <span class="post-card-title">Diving Into WebGL</span>
+                    <span class="post-card-date">March 6, 2021</span>
+                </h2>
+                <p class="post-card-summary">Reaching the pinnacle of web graphics - a little red cube!</p>
+                <div class="post-card-tags">
+                    
+                    <div class="post-card-tag">graphics</div>
+                    
+                    <div class="post-card-tag">opengl</div>
+                    
+                </div>
+            </div>
+        </a>
+        
+    </div>
+
+</div>
+
+<script>
+    var collapse = document.getElementsByClassName("collapsible");
+
+    for (let el of collapse) {
+        let next = el.nextElementSibling;
+        next.style.maxHeight = next.scrollHeight + "px";
+
+        el.addEventListener("click", function() {
+            let next = this.nextElementSibling;
+            if (next.style.maxHeight != "0px") {
+                next.style.maxHeight = 0;
+            } else {
+                next.style.maxHeight = next.scrollHeight + "px";
+            }
+        })
+    }
+</script>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
 </footer>
 </div>
     </body>

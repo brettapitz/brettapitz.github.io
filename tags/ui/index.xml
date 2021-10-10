@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>react on Brett Apitz is Learning Stuff</title>
-    <link>https://brettapitz.github.io/tags/react/</link>
-    <description>Recent content in react on Brett Apitz is Learning Stuff</description>
+    <title>ui on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/ui/</link>
+    <description>Recent content in ui on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Oct 2021 09:43:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Oct 2021 09:43:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/ui/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reactulator</title>
       <link>https://brettapitz.github.io/posts/calculator/</link>
@@ -16,16 +16,6 @@
       <description>I&amp;rsquo;ve been feeling a bit rusty lately, so I&amp;rsquo;d like to start making a little project and posting it here every day. Today&amp;rsquo;s thing is a simple calculator!
  You can play with the code here.
 I originally put this together in basic JavaScript, which I found quite pleasant to write, but quite ugly to look at later, so I remade it in React. The core of the design is a simple state machine: the calculator is either collecting its first (or left) input, awaiting its second (right) input after an operator is pressed, collecting its right input, or displaying the result (which is stored in &amp;lsquo;left&amp;rsquo;) after pressing &amp;lsquo;=&amp;rsquo;.</description>
-    </item>
-    
-    <item>
-      <title>Lights Out</title>
-      <link>https://brettapitz.github.io/posts/lightsout/</link>
-      <pubDate>Thu, 18 Mar 2021 09:43:45 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/posts/lightsout/</guid>
-      <description>As a kid, I had a handheld version of this game made by Tiger. For my siblings and me, it was neat distraction for a few weeks. Now, with some help from Blender and React, I can make it myself!
-Clearly, it&amp;rsquo;s not finished yet. I just wanted to put up my progress with it after a few hours. Getting React and JSX to play nicely with Hugo wasn&amp;rsquo;t much trouble, and the game&amp;rsquo;s logic is pretty straightforward.</description>
     </item>
     
   </channel>

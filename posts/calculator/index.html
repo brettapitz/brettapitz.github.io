@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title> Categories </title>
+<title> Reactulator </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -39,28 +39,41 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<br><br>
 
-<script>
-    var collapse = document.getElementsByClassName("collapsible");
-
-    for (let el of collapse) {
-        let next = el.nextElementSibling;
-        next.style.maxHeight = next.scrollHeight + "px";
-
-        el.addEventListener("click", function() {
-            let next = this.nextElementSibling;
-            if (next.style.maxHeight != "0px") {
-                next.style.maxHeight = 0;
-            } else {
-                next.style.maxHeight = next.scrollHeight + "px";
-            }
-        })
-    }
-</script>
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Reactulator</h1>
+      <h1 class="post-date">October 10, 2021</h1>
+    </div>
+    <p>I&rsquo;ve been feeling a bit rusty lately, so I&rsquo;d like to start making a little project and posting it here every day. Today&rsquo;s thing is a simple calculator!</p>
+<div id='calc_container'></div>
+<p>You can play with the code <a href="https://codepen.io/PhantomImage/pen/PoKopLV?editors=0110">here</a>.</p>
+<p>I originally put this together in basic JavaScript, which I found quite pleasant to write, but quite ugly to look at later, so I remade it in React. The core of the design is a simple state machine: the calculator is either collecting its first (or left) input, awaiting its second (right) input after an operator is pressed, collecting its right input, or displaying the result (which is stored in &lsquo;left&rsquo;) after pressing &lsquo;=&rsquo;.</p>
+<p>Left and right are stored as numbers rather than strings, but that might be complicating the code more than necessary. Pushing a new number to a string doesn&rsquo;t require place value management, and it would definitely simplify implementing decimal numbers.</p>
+<p>I spent about 30 minutes troubleshooting a problem that I&rsquo;m gonna blame on React. Functions can&rsquo;t be stored in state using the syntax <code>setFunction(f)</code>; you have to use <code>setFunction(() =&gt; f)</code>. Which is dumb.</p>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/react">react</a></div>
+      
+      <div class="post-tag"><a href="/tags/ui">ui</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=/js/reactulator.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

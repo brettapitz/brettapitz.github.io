@@ -38,7 +38,7 @@
         
     </div>
 </header>
-<div id="content">
+<div id="content" class="fadePageIn">
 
 <div class="post">
   <div class="above-post">
@@ -95,6 +95,23 @@ It doesn&rsquo;t look like much, but I&rsquo;ve learned a ton! Even this simple 
 
 <script type="module" src=/js/webgl_rotating_cube.js ></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
 </footer>
 </div>
     </body>
