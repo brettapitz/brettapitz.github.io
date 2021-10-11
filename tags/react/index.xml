@@ -19,15 +19,6 @@ I originally put this together in basic JavaScript, which I found quite pleasant
     </item>
     
     <item>
-      <title>Roy G Biv</title>
-      <link>https://brettapitz.github.io/posts/roygbiv/</link>
-      <pubDate>Sun, 10 Oct 2021 09:43:45 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/posts/roygbiv/</guid>
-      <description>Today&amp;rsquo;s little experiment passes background-color from parent to child in React. Simple enough, although the double bracket syntax for defining styles in JSX is weird. There&amp;rsquo;s not much to this, just a random idea. Neither white nor black text was legible in every square, so I used &amp;lsquo;-webkit-text-stroke&amp;rsquo; in CSS for an outline. Remember: white text with a black outline is easy to read against any background! Here&amp;rsquo;s the JS: const Block = ({val, color}) =&amp;gt; { return ( &amp;lt;div className=&amp;#34;color_block&amp;#34; style={{backgroundColor: color}}&amp;gt;{val}&amp;lt;/div&amp;gt; ) } const Rainbow = () =&amp;gt; { return ( &amp;lt;div id=&amp;#39;rainbow&amp;#39;&amp;gt; &amp;lt;Block val=&amp;#39;R&amp;#39; color=&amp;#39;#ff0000&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;O&amp;#39; color=&amp;#39;#ff7700&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;Y&amp;#39; color=&amp;#39;#ffff00&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;G&amp;#39; color=&amp;#39;#00cc00&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;B&amp;#39; color=&amp;#39;#0077cc&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;I&amp;#39; color=&amp;#39;#5500aa&amp;#39;/&amp;gt; &amp;lt;Block val=&amp;#39;V&amp;#39; color=&amp;#39;#770077&amp;#39;/&amp;gt; &amp;lt;/div&amp;gt; ) } ReactDOM.</description>
-    </item>
-    
-    <item>
       <title>Lights Out</title>
       <link>https://brettapitz.github.io/posts/lightsout/</link>
       <pubDate>Thu, 18 Mar 2021 09:43:45 -0500</pubDate>
