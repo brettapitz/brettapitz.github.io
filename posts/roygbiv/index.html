@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Roy G Biv </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14 4v-2h-14v11c0 0.552 0.448 1 1 1h13.5c0.828 0 1.5-0.672 1.5-1.5v-8.5h-2zM13 13h-12v-10h12v10zM2 5h10v1h-10zM8 7h4v1h-4zM8 9h4v1h-4zM8 11h3v1h-3zM2 7h5v5h-5z"></path></svg>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14.5 2h-13c-0.825 0-1.5 0.675-1.5 1.5v10c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-10c0-0.825-0.675-1.5-1.5-1.5zM6.23 8.6l-4.23 3.295v-7.838l4.23 4.543zM2.756 4h10.488l-5.244 3.938-5.244-3.938zM6.395 8.777l1.605 1.723 1.605-1.723 3.29 4.223h-9.79l3.29-4.223zM9.77 8.6l4.23-4.543v7.838l-4.23-3.295z"></path></svg>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content" class="fadePageIn">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Roy G Biv</h1>
+      <h1 class="post-date">October 10, 2021</h1>
+    </div>
+    <div id='roygbiv'></div>
+<p>Today&rsquo;s little experiment passes background-color from parent to child in React. Simple enough, although the double bracket syntax for defining styles in JSX is weird. There&rsquo;s not much to this, just a random idea. Neither white nor black text was legible in every square, so I used &lsquo;-webkit-text-stroke&rsquo; in CSS for an outline. Remember: white text with a black outline is easy to read against any background! Here&rsquo;s the JS:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> Block <span style="color:#ff79c6">=</span> ({val, color}) =&gt; {
+	<span style="color:#ff79c6">return</span> (
+		&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">className</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;color_block&#34;</span> <span style="color:#50fa7b">style</span><span style="color:#ff79c6">=</span>{{backgroundColor<span style="color:#ff79c6">:</span> color}}&gt;{val}&lt;/<span style="color:#ff79c6">div</span>&gt;
+	)
+}
+
+<span style="color:#ff79c6">const</span> Rainbow <span style="color:#ff79c6">=</span> () =&gt; {
+	<span style="color:#ff79c6">return</span> (
+		&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">id</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;rainbow&#39;</span>&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;R&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#ff0000&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;O&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#ff7700&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;Y&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#ffff00&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;G&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#00cc00&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;B&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#0077cc&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;I&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#5500aa&#39;</span>/&gt;
+			&lt;<span style="color:#ff79c6">Block</span> <span style="color:#50fa7b">val</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;V&#39;</span> <span style="color:#50fa7b">color</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;#770077&#39;</span>/&gt;
+		&lt;/<span style="color:#ff79c6">div</span>&gt;
+	)
+}
+
+ReactDOM.render(
+	&lt;<span style="color:#ff79c6">Rainbow</span> /&gt;,
+	<span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#39;roygbiv&#39;</span>)
+)</code></pre></div></p>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/react">react</a></div>
+      
+      <div class="post-tag"><a href="/tags/ui">ui</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=/js/roygbiv.js ></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
+</footer>
+</div>
+    </body>
+</html>
