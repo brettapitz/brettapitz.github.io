@@ -6,7 +6,16 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Oct 2021 16:43:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 08:30:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Double Hover</title>
+      <link>https://brettapitz.github.io/posts/doublehover/</link>
+      <pubDate>Tue, 12 Oct 2021 08:30:45 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/doublehover/</guid>
+      <description>I love feedback on mouse hover. It&amp;rsquo;s a simple, subtle thing that adds a lot of polish to a user interface. I was browsing the Humble Store and liked how its cards have a &amp;lsquo;dual-hover&amp;rsquo; behaviour - the &amp;lsquo;Buy&amp;rsquo; button changes when the cursor enters any part of the card, and changes again when it enters the button itself. This is really easy to do, but uses some CSS syntax I wasn&amp;rsquo;t aware of.</description>
+    </item>
+    
     <item>
       <title>Roy G Biv</title>
       <link>https://brettapitz.github.io/posts/roygbiv/</link>
