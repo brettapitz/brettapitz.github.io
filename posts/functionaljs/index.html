@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> Functional JavaScript </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="/main.min.css">
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/posts/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14 4v-2h-14v11c0 0.552 0.448 1 1 1h13.5c0.828 0 1.5-0.672 1.5-1.5v-8.5h-2zM13 13h-12v-10h12v10zM2 5h10v1h-10zM8 7h4v1h-4zM8 9h4v1h-4zM8 11h3v1h-3zM2 7h5v5h-5z"></path></svg>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/tags/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="/contact/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14.5 2h-13c-0.825 0-1.5 0.675-1.5 1.5v10c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-10c0-0.825-0.675-1.5-1.5-1.5zM6.23 8.6l-4.23 3.295v-7.838l4.23 4.543zM2.756 4h10.488l-5.244 3.938-5.244-3.938zM6.395 8.777l1.605 1.723 1.605-1.723 3.29 4.223h-9.79l3.29-4.223zM9.77 8.6l4.23-4.543v7.838l-4.23-3.295z"></path></svg>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content" class="fadePageIn">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Functional JavaScript</h1>
+      <h1 class="post-date">October 13, 2021</h1>
+    </div>
+    <p>I just finished a <a href="https://www.coursera.org/learn/programming-languages">Coursera class on SML</a>, so I&rsquo;ve got functional programming on the brain. And hey! JavaScript can do some functional stuff. Let&rsquo;s explore that!</p>
+<h2 id="currying">Currying</h2>
+<p>Functions are first-class in functional languages, meaning they can be passed to or returned from other, &lsquo;higher-order&rsquo; functions. Passing a function as an argument is pretty common - the array methods &lsquo;map&rsquo; and &lsquo;reduce&rsquo; are both higher-order functions that apply some provided function parameter to every element of the array. Returning a function isn&rsquo;t as common in modern programming, but it allows for some neat idioms.</p>
+<p>Currying is a technique that&rsquo;s not going to be super useful on its own in JavaScript, but it&rsquo;s essential for the next technique. A curried function takes some argument and returns a new function that takes some other argument.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">between <span style="color:#ff79c6">=</span> x =&gt; y =&gt; z =&gt; z <span style="color:#ff79c6">&gt;=</span> x <span style="color:#ff79c6">&amp;&amp;</span> z <span style="color:#ff79c6">&lt;=</span> y;
+</code></pre></div>
+<p>In this example, between takes a value, x, and returns a function that takes a value, y, which returns a function that takes a value, z, which returns true if z is between x and y. This function would be called with the syntax <code>between(x)(y)(z)</code>, which probably seems more unwieldy than a function that simply takes three arguments, and is called with <code>between(x, y, z)</code>. And that&rsquo;s because it is!</p>
+<p>In SML, this idiom allows for the use of fewer parentheses - between would be called as <code>between x y z</code>, but JavaScript doesn&rsquo;t allow for parenthesis-less function calls. In JavaScript, currying only really becomes useful in&hellip;</p>
+<h2 id="partial-completion">Partial Completion</h2>
+<p>When a curried function is called without providing all of its arguments, it returns a function awaiting the remaining arguments. This is called &lsquo;partial completion.&rsquo; For example, if I had a function for which valid inputs must be between 0 and 1, I could write a test function using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">isValid <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">0</span>)(<span style="color:#bd93f9">1</span>);
+</code></pre></div>
+<p><code>isValid</code> now holds a function that takes a single argument and returns true if it&rsquo;s between 0 and 1. It&rsquo;s called like any other function in JavaScript, <code>isValid(z)</code>, which can be a bit more succinct and less ambiguous than <code>between(0, 1, z)</code> or <code>between(z, 0, 1)</code>.</p>
+<p>This idiom really shines when a problem requires several functions that all use similar logic. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">isA <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">90</span>)(<span style="color:#bd93f9">100</span>);
+isB <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">80</span>)(<span style="color:#bd93f9">89</span>);
+isC <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">70</span>)(<span style="color:#bd93f9">79</span>);
+isD <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">60</span>)(<span style="color:#bd93f9">69</span>);
+isF <span style="color:#ff79c6">=</span> between(<span style="color:#bd93f9">0</span>)(<span style="color:#bd93f9">59</span>);
+</code></pre></div>
+<p>With this little collection, it&rsquo;d be easy to write a straightforward, legible grading function that returns a letter grade for a given input. This technique is even nicer when working in a REPL, where reusing functions is more common, and remembering them more essential.</p>
+<h2 id="recursion">Recursion</h2>
+<p>Recursion is common enough in most languages - functions that conditionally call themselves are really useful for recursive data structures like linked lists or trees. But in functional languages, recursion is used for everything. Languages like SML, Haskell, and OCaml don&rsquo;t provide <code>for</code> or <code>while</code> loop semantics; all looping is done via recursion.</p>
+<p>As an example, below is a typical implementation of a factorial function in an imperative style.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#8be9fd;font-style:italic">function</span> factorial(x) {
+  <span style="color:#8be9fd;font-style:italic">let</span> acc <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+
+  <span style="color:#ff79c6">while</span> (x <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">1</span>) {
+    acc <span style="color:#ff79c6">*=</span> x;
+    x <span style="color:#ff79c6">-=</span> <span style="color:#bd93f9">1</span>;
+  }
+
+  <span style="color:#ff79c6">return</span> acc;
+}
+</code></pre></div>
+<p>In a functional style, this definition would be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">factorial <span style="color:#ff79c6">=</span> (x, acc<span style="color:#ff79c6">=</span><span style="color:#bd93f9">1</span>) =&gt; x <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">?</span> acc <span style="color:#ff79c6">:</span> factorial(x<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>, acc<span style="color:#ff79c6">*</span>x);
+</code></pre></div>
+<p>On every loop, the function checks if x is less than or equal to 1; if it is, it returns the accumulator. Otherwise, it calls itself with updated arguments. Once familiar with functional syntax, this style is really easy to read and reason about, especially if formatted a little differently:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">factorial <span style="color:#ff79c6">=</span> (x, acc<span style="color:#ff79c6">=</span><span style="color:#bd93f9">1</span>) =&gt;
+  x <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">?</span>                    <span style="color:#6272a4">// Conditional
+</span><span style="color:#6272a4"></span>      acc                     <span style="color:#6272a4">// Left branch, or &#39;base case&#39;
+</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">:</span> factorial(x<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>, acc<span style="color:#ff79c6">*</span>x);  <span style="color:#6272a4">// Right branch
+</span></code></pre></div>
+<p>Unfortunately, this isn&rsquo;t as performant as the <code>while</code> loop version in modern JavaScript. Almost <a href="https://kangax.github.io/compat-table/es6/">every feature of ECMAScript 6 has been implemented in every major JavaScript engine</a>; the only exception is &lsquo;tail call optimization,&rsquo; which very few engines have implemented, and which is essential for performance in this kind of function.</p>
+<p>A tail call is a recursive function call that occurs as the very last step of a function; its return value is not used by the caller. In a typical recurse, function arguments are pushed to a new stack frame, which can be slow, and dangerous - if a function recurses too much, it could overflow the stack and crash the process. With tail call optimization, the caller&rsquo;s stack frame is reused, its arguments overwritten with the new values.</p>
+<p>Until this feature is more common, we&rsquo;re all stuck using the tall, ugly, brace-filled <code>while</code> loop version, at least whenever performance is important.</p>
+<h2 id="gimme-more">Gimme More</h2>
+<p>There are two more functional concepts I&rsquo;d like to discuss: pattern matching and function composition. But this post is long enough already, they&rsquo;ll have to wait!</p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/javascript">javascript</a></div>
+      
+      <div class="post-tag"><a href="/tags/functional">functional</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
+</footer>
+</div>
+    </body>
+</html>

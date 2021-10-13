@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>functional on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/functional/</link>
+    <description>Recent content in functional on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Oct 2021 08:30:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Functional JavaScript</title>
+      <link>https://brettapitz.github.io/posts/functionaljs/</link>
+      <pubDate>Wed, 13 Oct 2021 08:30:45 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/functionaljs/</guid>
+      <description>I just finished a Coursera class on SML, so I&amp;rsquo;ve got functional programming on the brain. And hey! JavaScript can do some functional stuff. Let&amp;rsquo;s explore that!
+Currying Functions are first-class in functional languages, meaning they can be passed to or returned from other, &amp;lsquo;higher-order&amp;rsquo; functions. Passing a function as an argument is pretty common - the array methods &amp;lsquo;map&amp;rsquo; and &amp;lsquo;reduce&amp;rsquo; are both higher-order functions that apply some provided function parameter to every element of the array.</description>
+    </item>
+    
+  </channel>
+</rss>
