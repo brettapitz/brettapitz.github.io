@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/api/</link>
+    <description>Recent content in api on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Oct 2021 10:58:55 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baby&#39;s First API Call</title>
+      <link>https://brettapitz.github.io/posts/simpleapicall/</link>
+      <pubDate>Fri, 15 Oct 2021 10:58:55 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/simpleapicall/</guid>
+      <description>Today I&amp;rsquo;m making a very simple asynchronous API call.
+Agify takes a name as input and returns a JSON object with fields for the input name, a predicted age, and a count. Not sure what the count is - could be number of data points, number of times queried, number of people with that name and that age, etc. I couldn&amp;rsquo;t find documentation on it.
+This is the easiest kind of API to use.</description>
+    </item>
+    
+  </channel>
+</rss>

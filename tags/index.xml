@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Oct 2021 09:08:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Oct 2021 10:58:55 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>api</title>
+      <link>https://brettapitz.github.io/tags/api/</link>
+      <pubDate>Fri, 15 Oct 2021 10:58:55 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://brettapitz.github.io/tags/javascript/</link>
+      <pubDate>Fri, 15 Oct 2021 10:58:55 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>css</title>
       <link>https://brettapitz.github.io/tags/css/</link>
@@ -31,15 +49,6 @@
       <pubDate>Wed, 13 Oct 2021 08:30:45 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/tags/functional/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://brettapitz.github.io/tags/javascript/</link>
-      <pubDate>Wed, 13 Oct 2021 08:30:45 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     

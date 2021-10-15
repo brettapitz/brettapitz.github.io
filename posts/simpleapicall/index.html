@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title> Tags </title>
+<title> Baby&#39;s First API Call </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -25,7 +25,7 @@
         </a>
         
         
-        <a class="nav-link active" href="/tags/">
+        <a class="nav-link " href="/tags/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
             <span class="text">Tags</span>
         </a>
@@ -39,84 +39,41 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<div id="tag-container">
-  
-  <a href="https://brettapitz.github.io/tags/comp-sci/">
-    <div class="tag-card">comp-sci 6</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/assembly/">
-    <div class="tag-card">assembly 4</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/react/">
-    <div class="tag-card">react 4</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/ui/">
-    <div class="tag-card">ui 4</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/algorithms/">
-    <div class="tag-card">algorithms 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/javascript/">
-    <div class="tag-card">javascript 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/python/">
-    <div class="tag-card">python 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/api/">
-    <div class="tag-card">api 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/c&#43;&#43;/">
-    <div class="tag-card">c&#43;&#43; 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/css/">
-    <div class="tag-card">css 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/d3/">
-    <div class="tag-card">d3 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/data-oriented-design/">
-    <div class="tag-card">data-oriented design 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/data-visualization/">
-    <div class="tag-card">data-visualization 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/functional/">
-    <div class="tag-card">functional 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/gamedev/">
-    <div class="tag-card">gamedev 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/games/">
-    <div class="tag-card">games 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/graphics/">
-    <div class="tag-card">graphics 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/opengl/">
-    <div class="tag-card">opengl 1</div>
-  </a>
-  
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Baby&#39;s First API Call</h1>
+      <h1 class="post-date">October 15, 2021</h1>
+    </div>
+    <p>Today I&rsquo;m making a very simple asynchronous API call.</p>
+<p>Agify takes a name as input and returns a JSON object with fields for the input name, a predicted age, and a count. Not sure what the count is - could be number of data points, number of times queried, number of people with that name and that age, etc. I couldn&rsquo;t find documentation on it.</p>
+<p>This is the easiest kind of API to use. It doesn&rsquo;t require a token or an account, just a URL. Each call to the API takes an input and combines it with a base URL to create the request.</p>
+<p>I&rsquo;m using the Fetch API to make the HTTP request. The JSON is extracted from the HTTP response, and if the age field exists, it&rsquo;s displayed. <a href="https://github.com/brettapitz/randomcode/blob/main/simpleapicall.js">Code&rsquo;s here!</a></p>
+<div id="agify_example">
+  <div id="agify_output">Enter your first name!</div>
+  <input id="agify_input"></input>
+</div>
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="/tags/api">api</a></div>
+      
+      <div class="post-tag"><a href="/tags/javascript">javascript</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=/js/simpleapicall.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

@@ -13,7 +13,7 @@
       <pubDate>Thu, 14 Oct 2021 09:08:45 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/posts/dropdowns/</guid>
-      <description>I looked for how to make collapsibles without JavaScript some time ago to no avail, but figured it out after learning the parent:hover child CSS selector syntax. Check it out.
+      <description>Some time ago, I unsuccessfully searched for a way to make collapsibles without JavaScript. I figured it out after learning the parent:hover child CSS selector syntax. Check it out.
 The CSS is a little messy, mostly because I&amp;rsquo;m making three separate dropdowns with different behaviors. It&amp;rsquo;d be cleaner in most practical applications. The only gotchas I encountered were needing to specify the background color for the menus, and using white-space: nowrap on the horizontally opening menu so that the height is constant while animating.</description>
     </item>
     
