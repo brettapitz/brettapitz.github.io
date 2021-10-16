@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 15:44:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Another Simple API</title>
+      <link>https://brettapitz.github.io/posts/simpleapicall2/</link>
+      <pubDate>Sat, 16 Oct 2021 08:35:07 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/simpleapicall2/</guid>
+      <description>Today&amp;rsquo;s code is much the same as yesterday&amp;rsquo;s. I just wanted to play with the Pokemon API a bit. This is the first time I&amp;rsquo;ve used the image-rendering CSS setting; the low-res sprites look a lot better with it set to &amp;lsquo;pixelated&amp;rsquo; for nearest-neighbor scaling. Here&amp;rsquo;s the CodePen!</description>
+    </item>
+    
+    <item>
       <title>Baby&#39;s First API Call</title>
       <link>https://brettapitz.github.io/posts/simpleapicall/</link>
       <pubDate>Fri, 15 Oct 2021 10:58:55 -0500</pubDate>
