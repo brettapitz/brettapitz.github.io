@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/brettapitz.github.io"
+      },
+      "articleSection" : "posts",
+      "name" : "The Adapter Pattern in Rust",
+      "headline" : "The Adapter Pattern in Rust",
+      "description" : "The simplest design pattern in Rust",
+      "inLanguage" : "en-US",
+      "author" : "Brett Apitz",
+      "creator" : "Brett Apitz",
+      "publisher": "Brett Apitz",
+      "accountablePerson" : "Brett Apitz",
+      "copyrightHolder" : "Brett Apitz",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-10-18 08:02:59 -0500 -0500",
+      "dateModified" : "2021-10-18 08:02:59 -0500 -0500",
+      "url" : "https:\/\/brettapitz.github.io\/posts\/rustadapter\/",
+      "wordCount" : "413",
+      "keywords" : [ "rust","design patterns","Blog" ]
+  }
+  </script>
+<title> The Adapter Pattern in Rust </title>
+<meta name="description" content="Personal site of Brett Apitz"/>
+<meta name="author" content="Brett Apitz"/>
+
+<link rel="stylesheet" type="text/css" href="https://brettapitz.github.io/main.min.css">
+<body>
+        <div id="wrapper">
+<header>
+    <h1 id="header-title"> Brett Apitz is Learning Stuff </h1>
+    <div id="navbar">
+        
+        
+        <a class="nav-link " href="https://brettapitz.github.io/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
+            <span class="text">Home</span>
+        </a>
+        
+        
+        <a class="nav-link " href="https://brettapitz.github.io/posts/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14 4v-2h-14v11c0 0.552 0.448 1 1 1h13.5c0.828 0 1.5-0.672 1.5-1.5v-8.5h-2zM13 13h-12v-10h12v10zM2 5h10v1h-10zM8 7h4v1h-4zM8 9h4v1h-4zM8 11h3v1h-3zM2 7h5v5h-5z"></path></svg>
+            <span class="text">Posts</span>
+        </a>
+        
+        
+        <a class="nav-link " href="https://brettapitz.github.io/tags/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
+            <span class="text">Tags</span>
+        </a>
+        
+        
+        <a class="nav-link " href="https://brettapitz.github.io/contact/">
+            <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M14.5 2h-13c-0.825 0-1.5 0.675-1.5 1.5v10c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-10c0-0.825-0.675-1.5-1.5-1.5zM6.23 8.6l-4.23 3.295v-7.838l4.23 4.543zM2.756 4h10.488l-5.244 3.938-5.244-3.938zM6.395 8.777l1.605 1.723 1.605-1.723 3.29 4.223h-9.79l3.29-4.223zM9.77 8.6l4.23-4.543v7.838l-4.23-3.295z"></path></svg>
+            <span class="text">Contact</span>
+        </a>
+        
+    </div>
+</header>
+<div id="content" class="fadePageIn">
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">The Adapter Pattern in Rust</h1>
+      <h1 class="post-date">October 18, 2021</h1>
+    </div>
+    <p>In object oriented languages, when an imported class needs to be altered to use a desired interface, one common approach is to use the Adapter design pattern. Typically, imported classes cannot be made to implement a new interface - implementation has to occur in the class definition. So, an instance of the imported class is stored in a new class that implements the interface.</p>
+<p>This is possible in Rust, and sometimes it&rsquo;s necessary, but there&rsquo;s a more elegant, idiomatic solution.</p>
+<p>Rust doesn&rsquo;t really have classes. It does have types, which do contain both data and logic, but the data and logic are defined separately. Data is stored in structs, and logic is defined either in methods specific to the struct, or in shared methods stored in traits, which are implemented much like interfaces are in other languages.</p>
+<p>However, trait implementation need not occur alongside the struct&rsquo;s definition, as in typical language interfaces. Traits can be implemented on external types. They can <em>even</em> be implemented on existing library types.</p>
+<p>For example, say that in some application, you need to compare the first characters of pairs of values repeatedly. And not just Strings - base-10 integers as well. You could wind up with a lot of duplicated logic, or multiple functions that share a similar purpose but result in function names like <code>compareFirstCharacterInt()</code> and <code>compareFirstCharacterString()</code>. By creating a trait specifically for this shared behavior and implementing it for Strings and i32s, you can make your code more readable and maintainable.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#ff79c6">trait</span> CompareFirstCharacter {
+  <span style="color:#ff79c6">fn</span> <span style="color:#50fa7b">same_initial</span>(<span style="color:#ff79c6">&amp;</span>self, other: <span style="color:#50fa7b">Self</span>) -&gt; <span style="color:#8be9fd">bool</span>;
+}
+
+<span style="color:#ff79c6">impl</span> CompareFirstCharacter <span style="color:#ff79c6">for</span> <span style="color:#8be9fd;font-style:italic">String</span> {
+  <span style="color:#ff79c6">fn</span> <span style="color:#50fa7b">same_initial</span>(<span style="color:#ff79c6">&amp;</span>self, other: <span style="color:#50fa7b">Self</span>) -&gt; <span style="color:#8be9fd">bool</span> {
+    self.to_lowercase().chars().next() <span style="color:#ff79c6">==</span> other.to_lowercase().chars().next()
+  }
+}
+
+<span style="color:#ff79c6">impl</span> CompareFirstCharacter <span style="color:#ff79c6">for</span> <span style="color:#8be9fd">i32</span> {
+  <span style="color:#ff79c6">fn</span> <span style="color:#50fa7b">same_initial</span>(<span style="color:#ff79c6">&amp;</span>self, other: <span style="color:#50fa7b">Self</span>) -&gt; <span style="color:#8be9fd">bool</span> {
+    <span style="color:#8be9fd;font-style:italic">let</span> self_string <span style="color:#ff79c6">=</span> self.abs().to_string();
+    <span style="color:#8be9fd;font-style:italic">let</span> other_string <span style="color:#ff79c6">=</span> other.abs().to_string();
+    
+    self_string.same_initial(other_string) <span style="color:#ff79c6">&amp;&amp;</span> self.signum() <span style="color:#ff79c6">==</span> other.signum()
+  }
+}
+</code></pre></div></p>
+<p>Now you can call <code>.same_initial()</code> on any String or any i32 and get the same behavior.</p>
+<p>That&rsquo;s really all there is to the Adapter pattern in Rust. We&rsquo;ve just taken our desired interface, the method <code>same_initial()</code>, and adapted it to work on pre-existing types, no wrapper necessary!</p>
+<p>Except sometimes a wrapper is necessary. This approach is limited by Rust&rsquo;s so-called &lsquo;orphan rule,&rsquo; which demands that either the type, the trait, or both must be defined in the same crate as the implementation. This helps avoid conflicting trait implementations and dependency issues. If you&rsquo;re importing both the type and the trait, then the standard object-oriented wrapping technique is still your best option.</p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/rust">rust</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/design%20patterns">design patterns</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
+</div>
+
+            </div><footer id="footer">
+  <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("a").click(function(el) {
+  let link = $(this).attr("href");
+    if (link.match("^mailto")) {
+
+  } else {
+    el.preventDefault();
+
+    $("#content").toggleClass("fadePageIn fadePageOut");
+
+    setTimeout(function() {
+      window.location = link;
+    }, 150);
+  }
+});
+</script>
+</footer>
+</div>
+    </body>
+</html>

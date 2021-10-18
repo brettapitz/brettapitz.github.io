@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Oct 2021 08:35:07 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Oct 2021 08:02:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>design patterns</title>
+      <link>https://brettapitz.github.io/tags/design-patterns/</link>
+      <pubDate>Mon, 18 Oct 2021 08:02:59 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/design-patterns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>https://brettapitz.github.io/tags/rust/</link>
+      <pubDate>Mon, 18 Oct 2021 08:02:59 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/rust/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>api</title>
       <link>https://brettapitz.github.io/tags/api/</link>
