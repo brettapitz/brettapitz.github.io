@@ -6,7 +6,16 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Oct 2021 08:02:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Oct 2021 12:52:07 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple To-Do List</title>
+      <link>https://brettapitz.github.io/posts/todolist/</link>
+      <pubDate>Wed, 20 Oct 2021 12:52:07 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/todolist/</guid>
+      <description>I recently starting undertaking technical interviews, and got my introduction to the famous &amp;ldquo;To-Do List&amp;rdquo; problem. I hadn&amp;rsquo;t looked into the topic before, so I muddled my way through it in my interview. Thinking back on it a day later, I realized that I had made it vastly more complicated than it needed to be, so I recreated it more cleanly. Note to future self: not every element has to be a React component!</description>
+    </item>
+    
     <item>
       <title>The Adapter Pattern in Rust</title>
       <link>https://brettapitz.github.io/posts/rustadapter/</link>

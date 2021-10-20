@@ -10,9 +10,9 @@
            "@id": "https:\/\/brettapitz.github.io"
       },
       "articleSection" : "posts",
-      "name" : "Another Simple API",
-      "headline" : "Another Simple API",
-      "description" : "Simple API calls, this time with more Pokemon!",
+      "name" : "Simple To-Do List",
+      "headline" : "Simple To-Do List",
+      "description" : "Remaking a To-Do List I butchered in an interview",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -20,14 +20,14 @@
       "accountablePerson" : "Brett Apitz",
       "copyrightHolder" : "Brett Apitz",
       "copyrightYear" : "2021",
-      "datePublished": "2021-10-16 08:35:07 -0500 -0500",
-      "dateModified" : "2021-10-16 08:35:07 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/posts\/simpleapicall2\/",
-      "wordCount" : "48",
-      "keywords" : [ "api","Blog" ]
+      "datePublished": "2021-10-20 12:52:07 -0500 -0500",
+      "dateModified" : "2021-10-20 12:52:07 -0500 -0500",
+      "url" : "https:\/\/brettapitz.github.io\/posts\/todolist\/",
+      "wordCount" : "80",
+      "keywords" : [ "ui","react","Blog" ]
   }
   </script>
-<title> Another Simple API </title>
+<title> Simple To-Do List </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -71,15 +71,18 @@
   </div>
   <div class="post-content">
     <div class="post-headline">
-      <h1 class="post-title">Another Simple API</h1>
-      <h1 class="post-date">October 16, 2021</h1>
+      <h1 class="post-title">Simple To-Do List</h1>
+      <h1 class="post-date">October 20, 2021</h1>
     </div>
-    <p>Today&rsquo;s code is much the same as yesterday&rsquo;s. I just wanted to play with the Pokemon API a bit. This is the first time I&rsquo;ve used the image-rendering CSS setting; the low-res sprites look a lot better with it set to &lsquo;pixelated&rsquo; for nearest-neighbor scaling. <a href="https://codepen.io/PhantomImage/pen/eYEpMQy">Here&rsquo;s the CodePen!</a></p>
-
+    <p>I recently starting undertaking technical interviews, and got my introduction to the famous &ldquo;To-Do List&rdquo; problem. I hadn&rsquo;t looked into the topic before, so I muddled my way through it in my interview. Thinking back on it a day later, I realized that I had made it vastly more complicated than it needed to be, so I recreated it more cleanly. Note to future self: not every element has to be a React component!</p>
+<p>The JS can be found <a href="https://github.com/brettapitz/randomcode/blob/main/lightsout.jsx">here</a>.</p>
+<div class='flex-center' id='todolist'></div>
     <div class="post-tags">
       <span>tags:</span>
       
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/api">api</a></div>
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
       
     </div>
     <br>
@@ -89,6 +92,9 @@
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=https://brettapitz.github.io/js/todolist.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
