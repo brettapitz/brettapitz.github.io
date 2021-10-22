@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "tags",
-      "name" : "Tags",
-      "headline" : "Tags",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Editable Divs",
+      "headline" : "Editable Divs",
+      "description" : "Discovering the contentEditable attribute",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-10-22 09:14:16 -0500 -0500",
       "dateModified" : "2021-10-22 09:14:16 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/tags\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/editablediv\/",
+      "wordCount" : "168",
+      "keywords" : [ "ui","html","Blog" ]
   }
   </script>
-<title> Tags </title>
+<title> Editable Divs </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -51,7 +51,7 @@
         </a>
         
         
-        <a class="nav-link active" href="https://brettapitz.github.io/tags/">
+        <a class="nav-link " href="https://brettapitz.github.io/tags/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M15.25 0h-6c-0.412 0-0.989 0.239-1.28 0.53l-7.439 7.439c-0.292 0.292-0.292 0.769 0 1.061l6.439 6.439c0.292 0.292 0.769 0.292 1.061 0l7.439-7.439c0.292-0.292 0.53-0.868 0.53-1.28v-6c0-0.412-0.338-0.75-0.75-0.75zM11.5 6c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5 1.5 0.672 1.5 1.5-0.672 1.5-1.5 1.5z"></path></svg>
             <span class="text">Tags</span>
         </a>
@@ -65,92 +65,48 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<div id="tag-container">
-  
-  <a href="https://brettapitz.github.io/tags/comp-sci/">
-    <div class="tag-card">comp-sci 6</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/ui/">
-    <div class="tag-card">ui 6</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/react/">
-    <div class="tag-card">react 5</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/assembly/">
-    <div class="tag-card">assembly 4</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/algorithms/">
-    <div class="tag-card">algorithms 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/api/">
-    <div class="tag-card">api 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/javascript/">
-    <div class="tag-card">javascript 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/python/">
-    <div class="tag-card">python 2</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/c&#43;&#43;/">
-    <div class="tag-card">c&#43;&#43; 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/css/">
-    <div class="tag-card">css 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/d3/">
-    <div class="tag-card">d3 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/data-oriented-design/">
-    <div class="tag-card">data-oriented design 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/data-visualization/">
-    <div class="tag-card">data-visualization 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/design-patterns/">
-    <div class="tag-card">design patterns 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/functional/">
-    <div class="tag-card">functional 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/gamedev/">
-    <div class="tag-card">gamedev 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/games/">
-    <div class="tag-card">games 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/graphics/">
-    <div class="tag-card">graphics 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/html/">
-    <div class="tag-card">html 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/opengl/">
-    <div class="tag-card">opengl 1</div>
-  </a>
-  
-  <a href="https://brettapitz.github.io/tags/rust/">
-    <div class="tag-card">rust 1</div>
-  </a>
-  
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Editable Divs</h1>
+      <h1 class="post-date">October 22, 2021</h1>
+    </div>
+    <p>I got the idea creating a custom div element that can be edited by a client, and naively spent about an hour in React trying to make a component that swapped between a div and an input (or textarea, when I realized inputs couldn&rsquo;t be multiline), with middling success. It worked, but it was pretty ugly; turns out matching fonts between inputs and divs is more complicated than simply matching CSS properties.</p>
+<p>Realizing my idea wasn&rsquo;t super original, I searched for how others have done editable divs. Turns out there&rsquo;s an HTML attribute specifically for it!</p>
+<p>The contentEditable attribute exists for most HTML elements, and allows the end-user to change the element&rsquo;s text. A little JavaScript makes editing toggle-able, and with very little effort you have something much nicer than my FrankenDiv.</p>
+<div id='editor'>
+  <div class='padded-default' id='editbox'>Edit me!</div>
+  <button id='editbutton' onclick='edit()'>Edit</button>
+</div>
+<script>
+  let editbox = document.getElementById('editbox');
+  let editbutton = document.getElementById('editbutton');
+  let editable = false;
+
+  const edit = () => {
+    editable = !editable;
+    editbox.contentEditable = editable;
+    editbox.focus();
+
+    editbutton.innerHTML = editable ? "Done" : "Edit";
+  }
+</script><blockquote>
+</blockquote>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/html">html</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">
