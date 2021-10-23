@@ -6,7 +6,17 @@
     <description>Recent content in css on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Oct 2021 09:08:45 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Oct 2021 08:35:27 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Progress Bar</title>
+      <link>https://brettapitz.github.io/posts/progressbar/</link>
+      <pubDate>Sat, 23 Oct 2021 08:35:27 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/progressbar/</guid>
+      <description>I tried making this in JavaScript, animating with setInterval, and it was complicated and janky and bad. I&amp;rsquo;m sure a library like Velocity could get it done, but I opted for nice, simple CSS transitions.
+Pressing a key sets width to 100% and background-color to green, releasing a key sets width to 0 and background-color to blue, and CSS transitions handle the rest. A select element lets you see different easings - changing the option changes the progress bar&amp;rsquo;s class, with a different &amp;lsquo;transition-timimg-function&amp;rsquo; for each class.</description>
+    </item>
+    
     <item>
       <title>No-JS Collapsibles</title>
       <link>https://brettapitz.github.io/posts/dropdowns/</link>

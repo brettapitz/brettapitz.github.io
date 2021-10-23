@@ -6,22 +6,31 @@
     <description>Recent content in Tags on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Oct 2021 09:14:16 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Oct 2021 08:35:27 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>html</title>
-      <link>https://brettapitz.github.io/tags/html/</link>
-      <pubDate>Fri, 22 Oct 2021 09:14:16 -0500</pubDate>
+      <title>css</title>
+      <link>https://brettapitz.github.io/tags/css/</link>
+      <pubDate>Sat, 23 Oct 2021 08:35:27 -0500</pubDate>
       
-      <guid>https://brettapitz.github.io/tags/html/</guid>
+      <guid>https://brettapitz.github.io/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ui</title>
       <link>https://brettapitz.github.io/tags/ui/</link>
-      <pubDate>Fri, 22 Oct 2021 09:14:16 -0500</pubDate>
+      <pubDate>Sat, 23 Oct 2021 08:35:27 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/tags/ui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>html</title>
+      <link>https://brettapitz.github.io/tags/html/</link>
+      <pubDate>Fri, 22 Oct 2021 09:14:16 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/tags/html/</guid>
       <description></description>
     </item>
     
@@ -67,15 +76,6 @@
       <pubDate>Fri, 15 Oct 2021 10:58:55 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>css</title>
-      <link>https://brettapitz.github.io/tags/css/</link>
-      <pubDate>Thu, 14 Oct 2021 09:08:45 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/tags/css/</guid>
       <description></description>
     </item>
     

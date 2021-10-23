@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "tags",
-      "name" : "css",
-      "headline" : "css",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Progress Bar",
+      "headline" : "Progress Bar",
+      "description" : "A hold-to-fill progress bar",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-10-23 08:35:27 -0500 -0500",
       "dateModified" : "2021-10-23 08:35:27 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/tags\/css\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/progressbar\/",
+      "wordCount" : "91",
+      "keywords" : [ "ui","css","Blog" ]
   }
   </script>
-<title> css </title>
+<title> Progress Bar </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -65,73 +65,31 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<br><br>
 
-<div class="year-section-button">
-    <div>2021</div>
-</div>
-<div class="year-section">
-
-    <div class="month-section-button collapsible">
-        <div>OCTOBER</div>
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Progress Bar</h1>
+      <h1 class="post-date">October 23, 2021</h1>
     </div>
-    <div class="month-section fadePageIn">
-        
-        <a href="https://brettapitz.github.io/posts/progressbar/">
-            <div class="post-card">
-                <h2>
-                    <span class="post-card-title">Progress Bar</span>
-                    <span class="post-card-date">October 23, 2021</span>
-                </h2>
-                <p class="post-card-summary">A hold-to-fill progress bar</p>
-                <div class="post-card-tags">
-                    
-                    <div class="post-card-tag">ui</div>
-                    
-                    <div class="post-card-tag">css</div>
-                    
-                </div>
-            </div>
-        </a>
-        
-        <a href="https://brettapitz.github.io/posts/dropdowns/">
-            <div class="post-card">
-                <h2>
-                    <span class="post-card-title">No-JS Collapsibles</span>
-                    <span class="post-card-date">October 14, 2021</span>
-                </h2>
-                <p class="post-card-summary">Pure CSS collapsible menus</p>
-                <div class="post-card-tags">
-                    
-                    <div class="post-card-tag">css</div>
-                    
-                    <div class="post-card-tag">ui</div>
-                    
-                </div>
-            </div>
-        </a>
-        
+    <p>I tried making this in JavaScript, animating with setInterval, and it was complicated and janky and bad. I&rsquo;m sure a library like Velocity could get it done, but I opted for nice, simple CSS transitions.</p>
+<p>Pressing a key sets width to 100% and background-color to green, releasing a key sets width to 0 and background-color to blue, and CSS transitions handle the rest. A select element lets you see different easings - changing the option changes the progress bar&rsquo;s class, with a different &lsquo;transition-timimg-function&rsquo; for each class.</p>
+<p><a href="https://codepen.io/PhantomImage/pen/zYdogbz">Play with it here!</a></p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/css">css</a></div>
+      
     </div>
-
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
-
-<script>
-    var collapse = document.getElementsByClassName("collapsible");
-
-    for (let el of collapse) {
-        let next = el.nextElementSibling;
-        next.style.maxHeight = next.scrollHeight + "px";
-
-        el.addEventListener("click", function() {
-            let next = this.nextElementSibling;
-            if (next.style.maxHeight != "0px") {
-                next.style.maxHeight = 0;
-            } else {
-                next.style.maxHeight = next.scrollHeight + "px";
-            }
-        })
-    }
-</script>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
