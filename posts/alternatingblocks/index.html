@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "",
-      "name" : "Brett Apitz is Learning Stuff",
-      "headline" : "Brett Apitz is Learning Stuff",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Alternating Blocks",
+      "headline" : "Alternating Blocks",
+      "description" : "Silly little thing with some basic tricks",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-10-24 09:36:21 -0500 -0500",
       "dateModified" : "2021-10-24 09:36:21 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/alternatingblocks\/",
+      "wordCount" : "71",
+      "keywords" : [ "react","ui","css","Blog" ]
   }
   </script>
-<title> Brett Apitz is Learning Stuff </title>
+<title> Alternating Blocks </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -39,7 +39,7 @@
     <div id="navbar">
         
         
-        <a class="nav-link active" href="https://brettapitz.github.io/">
+        <a class="nav-link " href="https://brettapitz.github.io/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
             <span class="text">Home</span>
         </a>
@@ -65,15 +65,48 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<div id="landing-page">
-    <h1>Welcome!</h1>
-    <p>I'm Brett.</p>
-    <p>I like to write about things I'm studying or topics I feel I can shed some light on.
-    Mostly, I'll be writing about computer science and sound design.</p>
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Alternating Blocks</h1>
+      <h1 class="post-date">October 24, 2021</h1>
+    </div>
+    <p>This is a simple pair of blocks that transition between 0 and 1 opacity. I came up with two neat ways to calculate the opacity changes!</p>
+<p>First, using absolute value like this will only ever produce 0 or 1:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> toggle <span style="color:#ff79c6">=</span> () <span style="color:#ff79c6">=</span> {
+  setLeftOpacity(<span style="color:#8be9fd;font-style:italic">Math</span>.abs(leftOpacity <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>))
+  setRightOpacity(<span style="color:#8be9fd;font-style:italic">Math</span>.abs(rightOpacity <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>))
+}</code></pre></div></p>
+<p>And second, using a swap function:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> toggle <span style="color:#ff79c6">=</span> () <span style="color:#ff79c6">=</span> {
+  <span style="color:#8be9fd;font-style:italic">let</span> temp <span style="color:#ff79c6">=</span> leftOpacity;
+  setLeftOpacity(rightOpacity)
+  setRightOpacity(temp)
+}</code></pre></div></p>
+<div id='alternatingblocks'></div>
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/css">css</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=https://brettapitz.github.io/js/alternatingblocks.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>

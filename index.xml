@@ -6,7 +6,18 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Oct 2021 08:35:27 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Oct 2021 09:36:21 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alternating Blocks</title>
+      <link>https://brettapitz.github.io/posts/alternatingblocks/</link>
+      <pubDate>Sun, 24 Oct 2021 09:36:21 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/alternatingblocks/</guid>
+      <description>This is a simple pair of blocks that transition between 0 and 1 opacity. I came up with two neat ways to calculate the opacity changes!
+First, using absolute value like this will only ever produce 0 or 1: const toggle = () = { setLeftOpacity(Math.abs(leftOpacity - 1)) setRightOpacity(Math.abs(rightOpacity - 1)) }
+And second, using a swap function: const toggle = () = { let temp = leftOpacity; setLeftOpacity(rightOpacity) setRightOpacity(temp) }</description>
+    </item>
+    
     <item>
       <title>Progress Bar</title>
       <link>https://brettapitz.github.io/posts/progressbar/</link>
