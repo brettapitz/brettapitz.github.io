@@ -13,9 +13,10 @@
       <pubDate>Sun, 24 Oct 2021 09:36:21 -0500</pubDate>
       
       <guid>https://brettapitz.github.io/posts/alternatingblocks/</guid>
-      <description>This is a simple pair of blocks that transition between 0 and 1 opacity. I came up with two neat ways to calculate the opacity changes!
+      <description>This is a simple pair of blocks that transition between 0 and 1 opacity. I came up with a few ways to do it.
 First, using absolute value like this will only ever produce 0 or 1: const toggle = () = { setLeftOpacity(Math.abs(leftOpacity - 1)) setRightOpacity(Math.abs(rightOpacity - 1)) }
-And second, using a swap function: const toggle = () = { let temp = leftOpacity; setLeftOpacity(rightOpacity) setRightOpacity(temp) }</description>
+And second, using a swap function: const toggle = () = { let temp = leftOpacity; setLeftOpacity(rightOpacity) setRightOpacity(temp) }
+And finally, there&amp;rsquo;s conditionals: const toggle = () = { setLeftOpacity(leftOpacity == 1 ?</description>
     </item>
     
     <item>

@@ -10,9 +10,9 @@
            "@id": "https:\/\/brettapitz.github.io"
       },
       "articleSection" : "posts",
-      "name" : "Alternating Blocks",
-      "headline" : "Alternating Blocks",
-      "description" : "Silly little thing with some basic tricks",
+      "name" : "Drag and Drop in HTML",
+      "headline" : "Drag and Drop in HTML",
+      "description" : "Making a D\u0026D Standard Array stat selector using the drag API",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -20,14 +20,14 @@
       "accountablePerson" : "Brett Apitz",
       "copyrightHolder" : "Brett Apitz",
       "copyrightYear" : "2021",
-      "datePublished": "2021-10-24 09:36:21 -0500 -0500",
-      "dateModified" : "2021-10-24 09:36:21 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/posts\/alternatingblocks\/",
-      "wordCount" : "94",
-      "keywords" : [ "react","ui","css","Blog" ]
+      "datePublished": "2021-10-26 06:24:30 -0500 -0500",
+      "dateModified" : "2021-10-26 06:24:30 -0500 -0500",
+      "url" : "https:\/\/brettapitz.github.io\/posts\/dragndrop\/",
+      "wordCount" : "160",
+      "keywords" : [ "ui","javascript","html","Blog" ]
   }
   </script>
-<title> Alternating Blocks </title>
+<title> Drag and Drop in HTML </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -71,35 +71,55 @@
   </div>
   <div class="post-content">
     <div class="post-headline">
-      <h1 class="post-title">Alternating Blocks</h1>
-      <h1 class="post-date">October 24, 2021</h1>
+      <h1 class="post-title">Drag and Drop in HTML</h1>
+      <h1 class="post-date">October 26, 2021</h1>
     </div>
-    <p>This is a simple pair of blocks that transition between 0 and 1 opacity. I came up with a few ways to do it.</p>
-<p>First, using absolute value like this will only ever produce 0 or 1:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> toggle <span style="color:#ff79c6">=</span> () <span style="color:#ff79c6">=</span> {
-  setLeftOpacity(<span style="color:#8be9fd;font-style:italic">Math</span>.abs(leftOpacity <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>))
-  setRightOpacity(<span style="color:#8be9fd;font-style:italic">Math</span>.abs(rightOpacity <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>))
-}</code></pre></div></p>
-<p>And second, using a swap function:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> toggle <span style="color:#ff79c6">=</span> () <span style="color:#ff79c6">=</span> {
-  <span style="color:#8be9fd;font-style:italic">let</span> temp <span style="color:#ff79c6">=</span> leftOpacity;
-  setLeftOpacity(rightOpacity)
-  setRightOpacity(temp)
-}</code></pre></div></p>
-<p>And finally, there&rsquo;s conditionals:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ff79c6">const</span> toggle <span style="color:#ff79c6">=</span> () <span style="color:#ff79c6">=</span> {
-  setLeftOpacity(leftOpacity <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">?</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>);
-  setRightOpacity(rightOpacity <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">?</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>);
-}</code></pre></div></p>
-<div id='alternatingblocks'></div>
+    <p>I&rsquo;ve been catching up on Critical Role lately and wanted to make a few stat selectors. First up is the Standard Array method, where 6 predetermined values are distributed across a character&rsquo;s abilities.</p>
+<p>The drag API in HTML is a pain. It&rsquo;s got a lot of boilerplate, isn&rsquo;t all that intuitive, and can&rsquo;t really do anything without JavaScript.</p>
+<p>I&rsquo;ve made it so that when an element is dropped, its class and innerHTML are swapped with the square it&rsquo;s dropped on. I could only get the swap to work using destructuring syntax; I&rsquo;m guessing a swap function using a &lsquo;temp&rsquo; variable runs into shallow copy issues. The destructuring looks like this:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">[heldItem.innerHTML, e.target.innerHTML] <span style="color:#ff79c6">=</span> [e.target.innerHTML, heldItem.innerHTML];
+[heldItem.className, e.target.className] <span style="color:#ff79c6">=</span> [e.target.className, heldItem.className];
+</code></pre></div></p>
+<p>I&rsquo;m also using a variable to store the element I&rsquo;m dragging. Sure would be nice if the drop event contained a reference to the dragged item.</p>
+<br/>
+<br/>
+<div class='row flex-center'>
+	<button id='ddeditbutton'>Edit values</button>
+</div>
+<div class='row flex-center'>
+	<div class='drag hundred-square full-square' draggable='true'>15</div>
+	<div class='drag hundred-square full-square' draggable='true'>14</div>
+	<div class='drag hundred-square full-square' draggable='true'>13</div>
+	<div class='drag hundred-square full-square' draggable='true'>12</div>
+	<div class='drag hundred-square full-square' draggable='true'>10</div>
+	<div class='drag hundred-square full-square' draggable='true'>8</div>
+</div>
+<div class='row flex-center'>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+	<div class='drag hundred-square empty-square' draggable='true'></div>
+</div>
+<div class='row flex-center'>
+	<label class='ddlabel'>Strength</label>
+	<label class='ddlabel'>Dexterity</label>
+	<label class='ddlabel'>Constitution</label>
+	<label class='ddlabel'>Intelligence</label>
+	<label class='ddlabel'>Wisdom</label>
+	<label class='ddlabel'>Charisma</label>
+</div>
+<br/>
+<br/>
     <div class="post-tags">
       <span>tags:</span>
       
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
-      
       <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
       
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/css">css</a></div>
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/javascript">javascript</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/html">html</a></div>
       
     </div>
     <br>
@@ -111,7 +131,7 @@
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
 
 
-<script type="module" src=https://brettapitz.github.io/js/alternatingblocks.js ></script>
+<script type="module" src=https://brettapitz.github.io/js/dragndrop.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
