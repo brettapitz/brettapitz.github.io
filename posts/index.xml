@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 15:44:59 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Point Buy Stat Selector</title>
+      <link>https://brettapitz.github.io/posts/pointbuy/</link>
+      <pubDate>Wed, 27 Oct 2021 09:20:16 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/pointbuy/</guid>
+      <description>Stat Selector Number Two uses a point buy system, implemented in React! In point buy, the player is given 8s in all stats, along with 27 points to allocate however they choose. Each stat level costs one point, up to level 13; levels 14 and 15 cost 2 points each. No stat can be raised above 15 - although perhaps I should make that adjustable.
+I went back and forth on making the Stat component smart or dumb; all of the stat logic effects the total held in the parent component, which would be simpler if I put that logic in the parent, but I found the code much cleaner and easier to parse with the child maintaining its own logic.</description>
+    </item>
+    
+    <item>
       <title>Drag and Drop in HTML</title>
       <link>https://brettapitz.github.io/posts/dragndrop/</link>
       <pubDate>Tue, 26 Oct 2021 06:24:30 -0500</pubDate>

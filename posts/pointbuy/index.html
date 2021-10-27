@@ -10,9 +10,9 @@
            "@id": "https:\/\/brettapitz.github.io"
       },
       "articleSection" : "posts",
-      "name" : "Drag and Drop in HTML",
-      "headline" : "Drag and Drop in HTML",
-      "description" : "Making a D\u0026D Standard Array stat selector using the drag API",
+      "name" : "Point Buy Stat Selector",
+      "headline" : "Point Buy Stat Selector",
+      "description" : "Another D\u0026D stat selector, this time using a Point Buy system",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -20,14 +20,14 @@
       "accountablePerson" : "Brett Apitz",
       "copyrightHolder" : "Brett Apitz",
       "copyrightYear" : "2021",
-      "datePublished": "2021-10-26 06:24:30 -0500 -0500",
-      "dateModified" : "2021-10-26 06:24:30 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/posts\/dragndrop\/",
-      "wordCount" : "160",
-      "keywords" : [ "ui","javascript","html","dungeons and dragons","Blog" ]
+      "datePublished": "2021-10-27 09:20:16 -0500 -0500",
+      "dateModified" : "2021-10-27 09:20:16 -0500 -0500",
+      "url" : "https:\/\/brettapitz.github.io\/posts\/pointbuy\/",
+      "wordCount" : "266",
+      "keywords" : [ "dungeons and dragons","ui","react","Blog" ]
   }
   </script>
-<title> Drag and Drop in HTML </title>
+<title> Point Buy Stat Selector </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -71,57 +71,23 @@
   </div>
   <div class="post-content">
     <div class="post-headline">
-      <h1 class="post-title">Drag and Drop in HTML</h1>
-      <h1 class="post-date">October 26, 2021</h1>
+      <h1 class="post-title">Point Buy Stat Selector</h1>
+      <h1 class="post-date">October 27, 2021</h1>
     </div>
-    <p>I&rsquo;ve been catching up on Critical Role lately and wanted to make a few stat selectors. First up is the Standard Array method, where 6 predetermined values are distributed across a character&rsquo;s abilities.</p>
-<p>The drag API in HTML is a pain. It&rsquo;s got a lot of boilerplate, isn&rsquo;t all that intuitive, and can&rsquo;t really do anything without JavaScript.</p>
-<p>I&rsquo;ve made it so that when an element is dropped, its class and innerHTML are swapped with the square it&rsquo;s dropped on. I could only get the swap to work using destructuring syntax; I&rsquo;m guessing a swap function using a &lsquo;temp&rsquo; variable runs into shallow copy issues. The destructuring looks like this:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">[heldItem.innerHTML, e.target.innerHTML] <span style="color:#ff79c6">=</span> [e.target.innerHTML, heldItem.innerHTML];
-[heldItem.className, e.target.className] <span style="color:#ff79c6">=</span> [e.target.className, heldItem.className];
-</code></pre></div></p>
-<p>I&rsquo;m also using a variable to store the element I&rsquo;m dragging. Sure would be nice if the drop event contained a reference to the dragged item.</p>
-<br/>
-<br/>
-<div class='row flex-center'>
-	<button id='ddeditbutton'>Edit values</button>
-</div>
-<div class='row flex-center'>
-	<div class='drag hundred-square full-square' draggable='true'>15</div>
-	<div class='drag hundred-square full-square' draggable='true'>14</div>
-	<div class='drag hundred-square full-square' draggable='true'>13</div>
-	<div class='drag hundred-square full-square' draggable='true'>12</div>
-	<div class='drag hundred-square full-square' draggable='true'>10</div>
-	<div class='drag hundred-square full-square' draggable='true'>8</div>
-</div>
-<div class='row flex-center'>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-	<div class='drag hundred-square empty-square' draggable='true'></div>
-</div>
-<div class='row flex-center'>
-	<label class='ddlabel'>Strength</label>
-	<label class='ddlabel'>Dexterity</label>
-	<label class='ddlabel'>Constitution</label>
-	<label class='ddlabel'>Intelligence</label>
-	<label class='ddlabel'>Wisdom</label>
-	<label class='ddlabel'>Charisma</label>
-</div>
-<br/>
-<br/>
+    <p>Stat Selector Number Two uses a point buy system, implemented in React! In point buy, the player is given 8s in all stats, along with 27 points to allocate however they choose. Each stat level costs one point, up to level 13; levels 14 and 15 cost 2 points each. No stat can be raised above 15 - although perhaps I should make that adjustable.</p>
+<p>I went back and forth on making the Stat component smart or dumb; all of the stat logic effects the total held in the parent component, which would be simpler if I put that logic in the parent, but I found the code much cleaner and easier to parse with the child maintaining its own logic.</p>
+<p>I had one strange problem to do with how React queues setState calls. The button for resetting the whole form, the one labelled &lsquo;Reset&rsquo;, resides in the parent, and the simplest way to get it to reset the Stat components is to have it call the <code>click</code> method on their individual reset buttons. However, the resulting calls to adjust the remaining total don&rsquo;t work properly.</p>
+<p>Console logging reveals that the code is definitely making it to the adjustTotal function, but setTotal only runs once, for the last stat. It&rsquo;s a simple enough problem to solve; line 50 of the code sets the total to 27 explicitly. This feels a little hacky, but performance isn&rsquo;t a concern here, and it&rsquo;s the most readable solution I could think of.</p>
+<p><a href="https://github.com/brettapitz/randomcode/blob/main/pointbuy.jsx">I put the code up here</a> and there&rsquo;s <a href="https://codepen.io/PhantomImage/pen/BadRYxe">a Codepen of it here</a> that you can play with!</p>
+<div id='pointbuy'></div>
     <div class="post-tags">
       <span>tags:</span>
       
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/dungeons%20and%20dragons">dungeons and dragons</a></div>
+      
       <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
       
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/javascript">javascript</a></div>
-      
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/html">html</a></div>
-      
-      <div class="post-tag"><a href="https://brettapitz.github.io/tags/dungeons%20and%20dragons">dungeons and dragons</a></div>
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
       
     </div>
     <br>
@@ -133,7 +99,7 @@
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
 
 
-<script type="module" src=https://brettapitz.github.io/js/dragndrop.js ></script>
+<script type="module" src=https://brettapitz.github.io/js/pointbuy.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>

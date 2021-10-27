@@ -18,12 +18,12 @@
     }, hovering ? "Buy!" : "$" + price);
   };
   var Box = ({game}) => {
-    return /* @__PURE__ */ React.createElement("card", {
-      className: "box"
+    return /* @__PURE__ */ React.createElement("div", {
+      className: "gamebox"
     }, /* @__PURE__ */ React.createElement(Pic, {
       im: game.cover
     }), /* @__PURE__ */ React.createElement("div", {
-      className: "box_row"
+      className: "gamebox-row"
     }, /* @__PURE__ */ React.createElement(Button, {
       price: game.price
     })));

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dungeons and dragons on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/dungeons-and-dragons/</link>
+    <description>Recent content in dungeons and dragons on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Oct 2021 09:20:16 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/dungeons-and-dragons/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Point Buy Stat Selector</title>
+      <link>https://brettapitz.github.io/posts/pointbuy/</link>
+      <pubDate>Wed, 27 Oct 2021 09:20:16 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/pointbuy/</guid>
+      <description>Stat Selector Number Two uses a point buy system, implemented in React! In point buy, the player is given 8s in all stats, along with 27 points to allocate however they choose. Each stat level costs one point, up to level 13; levels 14 and 15 cost 2 points each. No stat can be raised above 15 - although perhaps I should make that adjustable.
+I went back and forth on making the Stat component smart or dumb; all of the stat logic effects the total held in the parent component, which would be simpler if I put that logic in the parent, but I found the code much cleaner and easier to parse with the child maintaining its own logic.</description>
+    </item>
+    
+    <item>
+      <title>Drag and Drop in HTML</title>
+      <link>https://brettapitz.github.io/posts/dragndrop/</link>
+      <pubDate>Tue, 26 Oct 2021 06:24:30 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/dragndrop/</guid>
+      <description>I&amp;rsquo;ve been catching up on Critical Role lately and wanted to make a few stat selectors. First up is the Standard Array method, where 6 predetermined values are distributed across a character&amp;rsquo;s abilities.
+The drag API in HTML is a pain. It&amp;rsquo;s got a lot of boilerplate, isn&amp;rsquo;t all that intuitive, and can&amp;rsquo;t really do anything without JavaScript.
+I&amp;rsquo;ve made it so that when an element is dropped, its class and innerHTML are swapped with the square it&amp;rsquo;s dropped on.</description>
+    </item>
+    
+  </channel>
+</rss>
