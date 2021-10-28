@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "tags",
-      "name" : "dungeons and dragons",
-      "headline" : "dungeons and dragons",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Drop Lowest Stat Selector",
+      "headline" : "Drop Lowest Stat Selector",
+      "description" : "Dice roller for D\u0026D stats",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-10-28 07:42:30 -0500 -0500",
       "dateModified" : "2021-10-28 07:42:30 -0500 -0500",
-      "url" : "https:\/\/brettapitz.github.io\/tags\/dungeons-and-dragons\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/dicestats\/",
+      "wordCount" : "121",
+      "keywords" : [ "dungeons and dragons","ui","react","Blog" ]
   }
   </script>
-<title> dungeons and dragons </title>
+<title> Drop Lowest Stat Selector </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -65,101 +65,44 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<br><br>
 
-<div class="year-section-button">
-    <div>2021</div>
-</div>
-<div class="year-section">
-
-    <div class="month-section-button collapsible">
-        <div>OCTOBER</div>
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Drop Lowest Stat Selector</h1>
+      <h1 class="post-date">October 28, 2021</h1>
     </div>
-    <div class="month-section fadePageIn">
-        
-        <a href="https://brettapitz.github.io/posts/dicestats/">
-            <div class="post-card">
-                <h2>
-                    <span class="post-card-title">Drop Lowest Stat Selector</span>
-                    <span class="post-card-date">October 28, 2021</span>
-                </h2>
-                <p class="post-card-summary">Dice roller for D&amp;D stats</p>
-                <div class="post-card-tags">
-                    
-                    <div class="post-card-tag">dungeons and dragons</div>
-                    
-                    <div class="post-card-tag">ui</div>
-                    
-                    <div class="post-card-tag">react</div>
-                    
-                </div>
-            </div>
-        </a>
-        
-        <a href="https://brettapitz.github.io/posts/pointbuy/">
-            <div class="post-card">
-                <h2>
-                    <span class="post-card-title">Point Buy Stat Selector</span>
-                    <span class="post-card-date">October 27, 2021</span>
-                </h2>
-                <p class="post-card-summary">Another D&amp;D stat selector, this time using a Point Buy system</p>
-                <div class="post-card-tags">
-                    
-                    <div class="post-card-tag">dungeons and dragons</div>
-                    
-                    <div class="post-card-tag">ui</div>
-                    
-                    <div class="post-card-tag">react</div>
-                    
-                </div>
-            </div>
-        </a>
-        
-        <a href="https://brettapitz.github.io/posts/dragndrop/">
-            <div class="post-card">
-                <h2>
-                    <span class="post-card-title">Drag and Drop in HTML</span>
-                    <span class="post-card-date">October 26, 2021</span>
-                </h2>
-                <p class="post-card-summary">Making a D&amp;D Standard Array stat selector using the drag API</p>
-                <div class="post-card-tags">
-                    
-                    <div class="post-card-tag">ui</div>
-                    
-                    <div class="post-card-tag">javascript</div>
-                    
-                    <div class="post-card-tag">html</div>
-                    
-                    <div class="post-card-tag">dungeons and dragons</div>
-                    
-                </div>
-            </div>
-        </a>
-        
+    <p>This selector uses the 4d6 Drop Lowest method for selecting stats. Four d6 are rolled and the three highest are summed for each ability score.</p>
+<p><a href="https://github.com/brettapitz/randomcode/blob/main/dicestats.jsx">The code</a> is straightforward enough, with three levels of components.</p>
+<ul>
+<li>The dice component manages its own display based on its value prop.</li>
+<li>The stat component contains the logic for animation, randomization, and summing.</li>
+<li>The top level component just lays out the stats, and contains a button for rolling everything.</li>
+</ul>
+<p>I wanted to have the stat component calculate the sum only when the animation timed out, which required useEffect. The values passed to the sum function outside of useEffect were the values at the start of the animation, which I&rsquo;m guessing has to do with React optimization.</p>
+<div class='flex-center rounded shadowed padded' style='width: 25rem; margin: 2rem auto;' id='dicestats'></div>
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/dungeons%20and%20dragons">dungeons and dragons</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
+      
     </div>
-
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
-
-<script>
-    var collapse = document.getElementsByClassName("collapsible");
-
-    for (let el of collapse) {
-        let next = el.nextElementSibling;
-        next.style.maxHeight = next.scrollHeight + "px";
-
-        el.addEventListener("click", function() {
-            let next = this.nextElementSibling;
-            if (next.style.maxHeight != "0px") {
-                next.style.maxHeight = 0;
-            } else {
-                next.style.maxHeight = next.scrollHeight + "px";
-            }
-        })
-    }
-</script>
 
             </div><footer id="footer">
   <div id="copyright">Copyright (c) 2021 Brett Apitz</div>
+
+
+<script type="module" src=https://brettapitz.github.io/js/dicestats.js ></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>

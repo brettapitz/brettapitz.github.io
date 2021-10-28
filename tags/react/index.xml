@@ -6,7 +6,18 @@
     <description>Recent content in react on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Oct 2021 09:20:16 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Oct 2021 07:42:30 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Drop Lowest Stat Selector</title>
+      <link>https://brettapitz.github.io/posts/dicestats/</link>
+      <pubDate>Thu, 28 Oct 2021 07:42:30 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/dicestats/</guid>
+      <description>This selector uses the 4d6 Drop Lowest method for selecting stats. Four d6 are rolled and the three highest are summed for each ability score.
+The code is straightforward enough, with three levels of components.
+ The dice component manages its own display based on its value prop. The stat component contains the logic for animation, randomization, and summing. The top level component just lays out the stats, and contains a button for rolling everything.</description>
+    </item>
+    
     <item>
       <title>Point Buy Stat Selector</title>
       <link>https://brettapitz.github.io/posts/pointbuy/</link>

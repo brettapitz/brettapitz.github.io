@@ -79,7 +79,7 @@
 <p>I had one strange problem to do with how React queues setState calls. The button for resetting the whole form, the one labelled &lsquo;Reset&rsquo;, resides in the parent, and the simplest way to get it to reset the Stat components is to have it call the <code>click</code> method on their individual reset buttons. However, the resulting calls to adjust the remaining total don&rsquo;t work properly.</p>
 <p>Console logging reveals that the code is definitely making it to the adjustTotal function, but setTotal only runs once, for the last stat. It&rsquo;s a simple enough problem to solve; line 50 of the code sets the total to 27 explicitly. This feels a little hacky, but performance isn&rsquo;t a concern here, and it&rsquo;s the most readable solution I could think of.</p>
 <p><a href="https://github.com/brettapitz/randomcode/blob/main/pointbuy.jsx">I put the code up here</a> and there&rsquo;s <a href="https://codepen.io/PhantomImage/pen/BadRYxe">a Codepen of it here</a> that you can play with!</p>
-<div id='pointbuy'></div>
+<div class='shadowed padded rounded' id='pointbuy'></div>
     <div class="post-tags">
       <span>tags:</span>
       
