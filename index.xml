@@ -6,7 +6,18 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Oct 2021 07:42:30 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Nov 2021 10:44:05 -0400</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DnD Coin Purse</title>
+      <link>https://brettapitz.github.io/posts/coinpurse/</link>
+      <pubDate>Sat, 06 Nov 2021 10:44:05 -0400</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/coinpurse/</guid>
+      <description>Just when I thought I was out, DnD pulls me back in!
+This was more complicated than I expected. I wanted to make something simple that used modular math to calculate coin amounts based on some total, but making it functional meant a lot of little UI tweaks.
+I originally used &amp;lsquo;+&amp;rsquo; and &amp;lsquo;-&amp;rsquo; buttons to change coin values, but realized that would be awful for large amounts, so I switched to managing exchanges in a popup window.</description>
+    </item>
+    
     <item>
       <title>Drop Lowest Stat Selector</title>
       <link>https://brettapitz.github.io/posts/dicestats/</link>

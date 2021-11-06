@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "",
-      "name" : "Brett Apitz is Learning Stuff",
-      "headline" : "Brett Apitz is Learning Stuff",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "DnD Coin Purse",
+      "headline" : "DnD Coin Purse",
+      "description" : "A coin tracker for low-level Dungeons and Dragons games",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-11-06 10:44:05 -0400 EDT",
       "dateModified" : "2021-11-06 10:44:05 -0400 EDT",
-      "url" : "https:\/\/brettapitz.github.io\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/coinpurse\/",
+      "wordCount" : "157",
+      "keywords" : [ "dungeons and dragons","ui","react","Blog" ]
   }
   </script>
-<title> Brett Apitz is Learning Stuff </title>
+<title> DnD Coin Purse </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -39,7 +39,7 @@
     <div id="navbar">
         
         
-        <a class="nav-link active" href="https://brettapitz.github.io/">
+        <a class="nav-link " href="https://brettapitz.github.io/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
             <span class="text">Home</span>
         </a>
@@ -65,11 +65,33 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<div id="landing-page">
-    <h1>Welcome!</h1>
-    <p>I'm Brett.</p>
-    <p>I like to write about things I'm studying or topics I feel I can shed some light on.
-    Mostly, I'll be writing about computer science and sound design.</p>
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">DnD Coin Purse</h1>
+      <h1 class="post-date">November 6, 2021</h1>
+    </div>
+    <p>Just when I thought I was out, DnD pulls me back in!</p>
+<p>This was more complicated than I expected. I wanted to make something simple that used modular math to calculate coin amounts based on some total, but making it functional meant a lot of little UI tweaks.</p>
+<p>I originally used &lsquo;+&rsquo; and &lsquo;-&rsquo; buttons to change coin values, but realized that would be awful for large amounts, so I switched to managing exchanges in a popup window. The popup sorta needed to be its own component to prevent my code from turning to spaghetti, so I had to use a bit of parent-child communication, and making inputs more pleasant to use required controlling them, allowing only number values and highlighting the contents when the user clicks into the box.</p>
+<p>I&rsquo;m a bit under the weather right now, so I&rsquo;ll add the finished pouch to this page another day. For now, you can find the CodePen <a href="https://codepen.io/PhantomImage/pen/oNeozQO">here</a>.</p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/dungeons%20and%20dragons">dungeons and dragons</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">
