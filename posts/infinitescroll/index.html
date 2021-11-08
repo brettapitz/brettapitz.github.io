@@ -9,10 +9,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/brettapitz.github.io"
       },
-      "articleSection" : "",
-      "name" : "Brett Apitz is Learning Stuff",
-      "headline" : "Brett Apitz is Learning Stuff",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Infinite Scroll",
+      "headline" : "Infinite Scroll",
+      "description" : "Using the Intersection Observer API to implement an infinite scroll",
       "inLanguage" : "en-US",
       "author" : "Brett Apitz",
       "creator" : "Brett Apitz",
@@ -22,12 +22,12 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-11-08 08:27:55 -0400 -0400",
       "dateModified" : "2021-11-08 08:27:55 -0400 -0400",
-      "url" : "https:\/\/brettapitz.github.io\/",
-      "wordCount" : "0",
-      "keywords" : [ "Blog" ]
+      "url" : "https:\/\/brettapitz.github.io\/posts\/infinitescroll\/",
+      "wordCount" : "162",
+      "keywords" : [ "ui","react","Blog" ]
   }
   </script>
-<title> Brett Apitz is Learning Stuff </title>
+<title> Infinite Scroll </title>
 <meta name="description" content="Personal site of Brett Apitz"/>
 <meta name="author" content="Brett Apitz"/>
 
@@ -39,7 +39,7 @@
     <div id="navbar">
         
         
-        <a class="nav-link active" href="https://brettapitz.github.io/">
+        <a class="nav-link " href="https://brettapitz.github.io/">
             <svg class="icon" width="24" height="24" viewBox="0 0 16 16"><path d="M16 9.5l-3-3v-4.5h-2v2.5l-3-3-8 8v0.5h2v5h5v-3h2v3h5v-5h2z"></path></svg>
             <span class="text">Home</span>
         </a>
@@ -65,11 +65,31 @@
     </div>
 </header>
 <div id="content" class="fadePageIn">
-<div id="landing-page">
-    <h1>Welcome!</h1>
-    <p>I'm Brett.</p>
-    <p>I like to write about things I'm studying or topics I feel I can shed some light on.
-    Mostly, I'll be writing about computer science and sound design.</p>
+
+<div class="post">
+  <div class="above-post">
+  </div>
+  <div class="post-content">
+    <div class="post-headline">
+      <h1 class="post-title">Infinite Scroll</h1>
+      <h1 class="post-date">November 8, 2021</h1>
+    </div>
+    <p>I always thought an infinite scroll would be tricky to create, but the Intersection Observer API provided in modern JavaScript makes it a piece of cake.</p>
+<p>The IntersectionObserver constructor is passed a callback and an (optional) options object. This creates a bounding box that can target a number of elements, and pass data about those targets into the callback function. By default, this bounding box is the viewport.</p>
+<p>Within the callback, each target can be checked for intersection with the observer, with code executed conditionally. <a href="https://codepen.io/PhantomImage/pen/jOLzpOL">In my codepen</a>, I placed the target after the content list, and on intersection, a &lsquo;page&rsquo; variable is incremented to increase how many elements are rendered, which also pushes the target back out of the bounding box.</p>
+<p>For comparison, try commenting out line 31, which will force the page to load all elements immediately. You&rsquo;ll be looking at a blank page for much longer while waiting for all of the elements to be added to the DOM.</p>
+
+    <div class="post-tags">
+      <span>tags:</span>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/ui">ui</a></div>
+      
+      <div class="post-tag"><a href="https://brettapitz.github.io/tags/react">react</a></div>
+      
+    </div>
+    <br>
+  </div>
+  <div class="below-post"></div>
 </div>
 
             </div><footer id="footer">

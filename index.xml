@@ -6,7 +6,18 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Nov 2021 10:44:05 -0400</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Nov 2021 08:27:55 -0400</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Infinite Scroll</title>
+      <link>https://brettapitz.github.io/posts/infinitescroll/</link>
+      <pubDate>Mon, 08 Nov 2021 08:27:55 -0400</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/infinitescroll/</guid>
+      <description>I always thought an infinite scroll would be tricky to create, but the Intersection Observer API provided in modern JavaScript makes it a piece of cake.
+The IntersectionObserver constructor is passed a callback and an (optional) options object. This creates a bounding box that can target a number of elements, and pass data about those targets into the callback function. By default, this bounding box is the viewport.
+Within the callback, each target can be checked for intersection with the observer, with code executed conditionally.</description>
+    </item>
+    
     <item>
       <title>DnD Coin Purse</title>
       <link>https://brettapitz.github.io/posts/coinpurse/</link>
