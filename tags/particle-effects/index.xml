@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>particle effects on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/particle-effects/</link>
+    <description>Recent content in particle effects on Brett Apitz is Learning Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Nov 2021 10:36:41 -0400</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/particle-effects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Snowstorm in Canvas</title>
+      <link>https://brettapitz.github.io/posts/snowstorm/</link>
+      <pubDate>Thu, 11 Nov 2021 10:36:41 -0400</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/snowstorm/</guid>
+      <description>I wanted to get to know Canvas, and I thought a simple particle effect would make a nice first project.
+The particles are stored as position, speed, and size values in a fixed length pool. Whenever a particle goes offscreen, its data is reset to place it at a random position at the start. A pool simplifies things a great deal - the alternative is spawning new particles and pushing them to an array, and filtering the array every frame to remove dead particles, which is far less efficient, in both speed and memory usage.</description>
+    </item>
+    
+  </channel>
+</rss>
