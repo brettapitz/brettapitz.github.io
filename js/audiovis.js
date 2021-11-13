@@ -4,6 +4,7 @@
   var canvasctx = canvas.getContext("2d");
   var audioctx = new (window.AudioContext || window.webkitAudioContext)();
   var audioEl = document.querySelector("audio");
+  audioEl.onPlay = () => audioctx.resume();
   var source = audioctx.createMediaElementSource(audioEl);
   var analyser = audioctx.createAnalyser();
   var visOption = document.getElementsByClassName("active")[0];
