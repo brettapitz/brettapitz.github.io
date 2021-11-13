@@ -6,7 +6,18 @@
     <description>Recent content on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Nov 2021 10:36:41 -0400</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Nov 2021 11:06:05 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Audio Visualization</title>
+      <link>https://brettapitz.github.io/posts/audiovis/</link>
+      <pubDate>Fri, 12 Nov 2021 11:06:05 -0500</pubDate>
+      
+      <guid>https://brettapitz.github.io/posts/audiovis/</guid>
+      <description>I&amp;rsquo;ve been meaning to delve into the Web Audio API for a while, but I didn&amp;rsquo;t know enough about Canvas to do anything interesting. Until now!
+The javascript can be found here.
+Oscillocope Frequency Bars    The code is mostly a standard use of the API, but I did run into one problem: the Analyser&amp;rsquo;s frequency data is linear, but human hearing is logarithmic. Displaying the raw frequency data would result in 6 octaves (of the 10 that healthy human ears can hear) being condensed into about 6% of the graph.</description>
+    </item>
+    
     <item>
       <title>A Snowstorm in Canvas</title>
       <link>https://brettapitz.github.io/posts/snowstorm/</link>

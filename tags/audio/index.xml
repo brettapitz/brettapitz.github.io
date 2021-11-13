@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>data-visualization on Brett Apitz is Learning Stuff</title>
-    <link>https://brettapitz.github.io/tags/data-visualization/</link>
-    <description>Recent content in data-visualization on Brett Apitz is Learning Stuff</description>
+    <title>audio on Brett Apitz is Learning Stuff</title>
+    <link>https://brettapitz.github.io/tags/audio/</link>
+    <description>Recent content in audio on Brett Apitz is Learning Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Nov 2021 11:06:05 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Nov 2021 11:06:05 -0500</lastBuildDate><atom:link href="https://brettapitz.github.io/tags/audio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Audio Visualization</title>
       <link>https://brettapitz.github.io/posts/audiovis/</link>
@@ -16,17 +16,6 @@
       <description>I&amp;rsquo;ve been meaning to delve into the Web Audio API for a while, but I didn&amp;rsquo;t know enough about Canvas to do anything interesting. Until now!
 The javascript can be found here.
 Oscillocope Frequency Bars    The code is mostly a standard use of the API, but I did run into one problem: the Analyser&amp;rsquo;s frequency data is linear, but human hearing is logarithmic. Displaying the raw frequency data would result in 6 octaves (of the 10 that healthy human ears can hear) being condensed into about 6% of the graph.</description>
-    </item>
-    
-    <item>
-      <title>Plotting Pokemon Stats</title>
-      <link>https://brettapitz.github.io/posts/pokemon_scatter/</link>
-      <pubDate>Tue, 09 Mar 2021 09:43:45 -0500</pubDate>
-      
-      <guid>https://brettapitz.github.io/posts/pokemon_scatter/</guid>
-      <description>I made this data visualization earlier this year while studying d3.js. Just got it up and running on the new site. I&amp;rsquo;m using data from Takamasa Kato on Kaggle.
-Axes are selectable, and you can hover over a point to see which Pokemon it belongs to.
- X Axis: Select    Y Axis: Select     </description>
     </item>
     
   </channel>
