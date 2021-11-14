@@ -14,25 +14,26 @@
   source.connect(analyser).connect(audioctx.destination);
   analyser.fftSize = 4096;
   canvasctx.strokeStyle = "#0ff";
-  canvasctx.lineWidth = 2;
+  canvasctx.lineWidth = 1;
   var bgColor = "black";
   var freqBarColor = "#0ff";
   var freqBarHeightMult = 1.5;
   var freqBarSpacer = 2;
   var sampleSpacing = canvas.width / analyser.fftSize;
   var scopeData = new Float32Array(analyser.fftSize);
-  var freqData = new Uint8Array(analyser.fftSize / 2);
+  var freqData = new Uint8Array(analyser.frequencyBinCount);
+  var freqBarWidth = Math.floor(canvas.width / Math.log2(analyser.fftSize));
   function drawScope() {
     analyser.getFloatTimeDomainData(scopeData);
     canvasctx.fillStyle = bgColor;
     canvasctx.fillRect(0, 0, canvas.width, canvas.height);
     let x = 0;
-    let y = 0;
+    let y = canvas.height / 2;
     canvasctx.beginPath();
     for (let datum of scopeData) {
       y = canvas.height / 2 * (1 + datum);
-      x += sampleSpacing;
       canvasctx.lineTo(x, y);
+      x += sampleSpacing;
     }
     canvasctx.stroke();
     requestAnimationFrame(draw);
@@ -54,7 +55,6 @@
     canvasctx.fillRect(0, 0, canvas.width, canvas.height);
     canvasctx.fillStyle = freqBarColor;
     let bars = logAverage(freqData);
-    const freqBarWidth = Math.floor(canvas.width / bars.length);
     let x = 0;
     let y = 0;
     for (let bar of bars) {
