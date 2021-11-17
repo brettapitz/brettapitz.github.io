@@ -23,7 +23,7 @@
       "datePublished": "2021-11-12 11:06:05 -0500 EST",
       "dateModified" : "2021-11-12 11:06:05 -0500 EST",
       "url" : "https:\/\/brettapitz.github.io\/posts\/audiovis\/",
-      "wordCount" : "246",
+      "wordCount" : "292",
       "keywords" : [ "canvas","audio","data-visualization","Blog" ]
   }
   </script>
@@ -76,16 +76,19 @@
     </div>
     <p>I&rsquo;ve been meaning to delve into the Web Audio API for a while, but I didn&rsquo;t know enough about Canvas to do anything interesting. Until now!</p>
 <p><a href="https://github.com/brettapitz/randomcode/blob/main/audiovis.js">The javascript can be found here.</a></p>
+<h2 id="edit-1117">Edit 11/17</h2>
+<p><a href="https://codepen.io/PhantomImage/pen/VwzqePG">After experimenting a little with progressively rendering to a canvas</a>, I added a spectrogram. I also made a few optimization tweaks to the oscilloscope, and I finally made a favicon!</p>
 <div id='vis_selector'>
   <div class='vis_option active' id='scope'>Oscillocope</div>
-  <div class='vis_option' id='freq'>Frequency Bars</div>
+  <div class='vis_option' id='hist'>Histogram</div>
+  <div class='vis_option' id='spec'>Spectrogram</div>
 </div>
 <canvas id='vis_canvas' width='1000px' height='500px'></canvas>
 <audio controls>
   <source src='HigherGround.mp3' type='audio/mpeg'>
 </audio>
 <p>The code is mostly a standard use of the API, but I did run into one problem: the Analyser&rsquo;s frequency data is linear, but human hearing is logarithmic. Displaying the raw frequency data would result in 6 octaves (of the 10 that healthy human ears can hear) being condensed into about 6% of the graph. Half of the graph would be displaying just the highest octave, which is almost nonexistent in the mp3 I&rsquo;m using!</p>
-<p>I converted the data like so:</p>
+<p>For the histogram, I converted the data like so:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> logAverage(arr) {
   <span style="color:#8be9fd;font-style:italic">let</span> ret <span style="color:#ff79c6">=</span> [];
   <span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
@@ -100,8 +103,9 @@
   <span style="color:#ff79c6">return</span> ret;
 }
 </code></pre></div>
-<p>Each iteration of the <code>while</code> loop averages twice as many data points as the previous one, which makes each bar on the frequency graph represent the same perceptual frequency range. I thought of initializaing the return array size using <code>Math.log2()</code> to prevent multiple allocations, but it felt like a premature optimization. The <code>push</code> syntax is cleaner.</p>
-<p>I&rsquo;d like to add a waveform/seek display, and a spectrogram, but I need to think on them a bit more. They&rsquo;re both significantly more complicated than these two.</p>
+<p>Each iteration of the <code>while</code> loop averages twice as many data points as the previous one, which makes each bar on the frequency graph represent the same perceptual frequency range. I thought of initializing the return array size using <code>Math.log2()</code> to prevent multiple allocations, but it felt like a premature optimization. The <code>push</code> syntax is cleaner.</p>
+<p>For the spectrogram, this method didn&rsquo;t provide enough resolution, so I used <code>Math.sqrt()</code> when calculating color placement instead.</p>
+<p>I&rsquo;d still like to add a waveform-seek display, but I&rsquo;m not sure yet how I want to generate the waveform image.</p>
 
     <div class="post-tags">
       <span>tags:</span>
